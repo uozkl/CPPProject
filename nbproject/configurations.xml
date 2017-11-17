@@ -19,7 +19,6 @@
     <logicalFolder name="SourceFiles" displayName="源文件" projectFiles="true">
       <itemPath>Colour.cpp</itemPath>
       <itemPath>../../Dice.cpp</itemPath>
-      <itemPath>../../Makefile</itemPath>
       <itemPath>Player.cpp</itemPath>
       <itemPath>QwintoPlayer.cpp</itemPath>
       <itemPath>QwintoRow.cpp</itemPath>
@@ -60,8 +59,6 @@
       <item path="../../Dice.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../../Dice.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../Makefile" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../QwintoScoreSheet.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -137,8 +134,6 @@
       <item path="../../Dice.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../../Dice.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../Makefile" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../QwintoScoreSheet.cpp" ex="false" tool="1" flavor2="0">
       </item>

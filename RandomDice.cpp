@@ -9,11 +9,8 @@
 #include "RandomDice.h"
 
 RandomDice::RandomDice() {
+        std::default_random_engine generator;
+        std::uniform_int_distribution<int> distribution(1,6);
+        dice=distribution(generator);
+    
 }
-
-RandomDice::RandomDice(const RandomDice& orig) {
-}
-
-RandomDice::~RandomDice() {
-}
-

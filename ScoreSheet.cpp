@@ -8,12 +8,5 @@
 
 #include "ScoreSheet.h"
 
-ScoreSheet::ScoreSheet() {
-}
 
-ScoreSheet::ScoreSheet(const ScoreSheet& orig) {
-}
-
-ScoreSheet::~ScoreSheet() {
-}
 
