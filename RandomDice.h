@@ -14,12 +14,9 @@ class RandomDice {
     int dice;
 public:
     RandomDice();
-    int getDice();
-    
-    RandomDice(const RandomDice& orig);
-    virtual ~RandomDice();
-private:
-
+    int getDice(){
+        return dice;
+    }
 };
 
 #endif /* RANDOMDICE_H */
