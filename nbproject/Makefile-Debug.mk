@@ -35,6 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/29dd86f/Dice.o \
+	${OBJECTDIR}/_ext/29dd86f/QwintoScoreSheet.o \
+	${OBJECTDIR}/_ext/29dd86f/main.o \
 	${OBJECTDIR}/main.o
 
 
@@ -61,6 +64,21 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cppproject.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cppproject ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/_ext/29dd86f/Dice.o: ../../Dice.cpp
+	${MKDIR} -p ${OBJECTDIR}/_ext/29dd86f
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/29dd86f/Dice.o ../../Dice.cpp
+
+${OBJECTDIR}/_ext/29dd86f/QwintoScoreSheet.o: ../../QwintoScoreSheet.cpp
+	${MKDIR} -p ${OBJECTDIR}/_ext/29dd86f
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/29dd86f/QwintoScoreSheet.o ../../QwintoScoreSheet.cpp
+
+${OBJECTDIR}/_ext/29dd86f/main.o: ../../main.cpp
+	${MKDIR} -p ${OBJECTDIR}/_ext/29dd86f
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/29dd86f/main.o ../../main.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
