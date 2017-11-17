@@ -8,12 +8,17 @@
 
 #ifndef SCORESHEET_H
 #define SCORESHEET_H
-
+#include "Player.h"
 class ScoreSheet {
+    Player player;
+    int failed,score;
 public:
-    ScoreSheet();
-    ScoreSheet(const ScoreSheet& orig);
-    virtual ~ScoreSheet();
+    Player getPlayer();
+    void setPlayer();
+    int getScore();
+    int getFailed();
+    int setScore();
+    int setFailed();
 private:
 
 };
