@@ -7,14 +7,14 @@
  */
 
 #include <cstdlib>
-
+#include<iostream>
 using namespace std;
 
 /*
  *   f
  */
 int main(int argc, char** argv) {
-
+    cout<<"ididid";
     return 0;
 }
 
