@@ -3,7 +3,7 @@
  * File:   QwixxPlayer.cpp
  * Author: Tony
  * 
- * Created on 2017年11月17日, 下午2:57
+ * Created on 2017骞�11鏈�17鏃�, 涓嬪崍2:57
  */
 
 #include "QwixxPlayer.h"
@@ -12,8 +12,15 @@ QwixxPlayer::QwixxPlayer() {
 }
 
 QwixxPlayer::QwixxPlayer(const QwixxPlayer& orig) {
+
+}
+void QwixxPlayer::inputBeforeRoll(RollOfDice &rod){
+
 }
 
+void QwixxPlayer::inputAfterRoll(RollOfDice &rod){
+
+}
 QwixxPlayer::~QwixxPlayer() {
 }
 
