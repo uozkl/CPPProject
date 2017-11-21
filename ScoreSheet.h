@@ -3,24 +3,31 @@
  * File:   ScoreSheet.h
  * Author: Tony
  *
- * Created on 2017年11月17日, 下午2:56
+ * Created on 2017骞�11鏈�17鏃�, 涓嬪崍2:56
  */
 
 #ifndef SCORESHEET_H
 #define SCORESHEET_H
 #include "Player.h"
+#include "Colour.h"
+#include <string>
+
 class ScoreSheet {
-    Player player;
-    int failed,score;
+
 public:
-    Player getPlayer();
+   // Player getPlayer();
     void setPlayer();
     int getScore();
     int getFailed();
-    int setScore();
-    int setFailed();
+    bool score(RollOfDice rod, Colour color);
+    int setTotal();
+    virtual ~ScoreSheet();
 private:
-
+    std::string name;
+    int failed,score;
+protected:
+    virtual bool validate() = 0;
+    virtual int calcTotal() = 0;
 };
 
 #endif /* SCORESHEET_H */
