@@ -3,7 +3,7 @@
  * File:   Player.h
  * Author: Tony
  *
- * Created on 2017å¹´11æœˆ17æ—¥, ä¸‹å�ˆ2:57
+ * Created on
  */
 
 #ifndef PLAYER_H

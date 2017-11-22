@@ -3,10 +3,14 @@
  * File:   ScoreSheet.cpp
  * Author: Tony
  * 
- * Created on 2017年11月17日, 下午2:56
+ * Created on
  */
 
 #include "ScoreSheet.h"
+#include <iostream>
+using namespace std;
 
-
-
+ostream& operator<<(ostream& out, const ScoreSheet& sheet){
+	out<<sheet;
+	return out;
+}

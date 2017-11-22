@@ -3,7 +3,7 @@
  * File:   ScoreSheet.h
  * Author: Tony
  *
- * Created on 2017骞�11鏈�17鏃�, 涓嬪崍2:56
+ * Created on
  */
 
 #ifndef SCORESHEET_H
@@ -11,20 +11,22 @@
 #include "Player.h"
 #include "Colour.h"
 #include <string>
+using namespace std;
 
 class ScoreSheet {
 
+	friend ostream& operator<<(ostream& out, const ScoreSheet& sheet);
 public:
    // Player getPlayer();
-    void setPlayer();
-    int getScore();
-    int getFailed();
+	ScoreSheet();
+
     bool score(RollOfDice rod, Colour color);
-    int setTotal();
+   // int setTotal();
     virtual ~ScoreSheet();
 private:
-    std::string name;
-    int failed,score;
+    string name;
+    int failed;
+	int overallScore;
 protected:
     virtual bool validate() = 0;
     virtual int calcTotal() = 0;

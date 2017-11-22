@@ -3,7 +3,7 @@
  * File:   QwintoPlayer.h
  * Author: Tony
  *
- * Created on 2017å¹´11æœˆ17æ—¥, ä¸‹å�ˆ2:57
+ * Created on
  */
 
 #ifndef QWINTOPLAYER_H
@@ -11,7 +11,7 @@
 #include "RollOfDice.h"
 #include "QwintoScoreSheet.h"
 
-class QwintoPlayer {
+class QwintoPlayer : public Player {
 public:
     QwintoPlayer();
     QwintoPlayer(const QwintoPlayer& orig);

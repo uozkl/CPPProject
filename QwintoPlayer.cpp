@@ -3,7 +3,7 @@
  * File:   QwintoPlayer.cpp
  * Author: Tony
  * 
- * Created on 2017骞�11鏈�17鏃�, 涓嬪崍2:57
+ * Created on
  */
 
 #include "QwintoPlayer.h"

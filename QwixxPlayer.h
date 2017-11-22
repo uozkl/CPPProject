@@ -11,7 +11,7 @@
 #include "RollOfDice.h"
 #include "QwixxScoreSheet.h"
 
-class QwixxPlayer {
+class QwixxPlayer : public Player {
 public:
     QwixxPlayer();
     QwixxPlayer(const QwixxPlayer& orig);
