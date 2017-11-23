@@ -6,6 +6,7 @@
  */
 #include<iostream>
 #include"QwintoScoreSheet.h"
+#include "QwixxScoreSheet.h"
 using namespace std;
 
 int main(){
@@ -13,13 +14,16 @@ int main(){
 	int version;
 	cin>>version;
 	if (version == 1){
-		QwintoScoreSheet ss = new ScoreSheet();
-		cout<<ss;
-	}else if(version == 2){
-		//do something
-	}else{
-		//wrong input
-	}
+		QwintoScoreSheet *qtss;
+		cout<<"Qwinto selected."<<endl;
+		cout<<*qtss;
+}else if(version == 2){
+	QwixxScoreSheet *qxss;
+			cout<<"Qwixx selected."<<endl;
+			cout<<*qxss;
+}else{
+	//wrong input
+}
 return 0;
 }
 

@@ -18,6 +18,7 @@ class QwintoScoreSheet : public ScoreSheet{
 	friend ostream& operator<<(ostream& out, const QwintoScoreSheet& sheet);
 public:
     QwintoScoreSheet();
+
     QwintoScoreSheet(const QwintoScoreSheet& orig);
     virtual ~QwintoScoreSheet();
 

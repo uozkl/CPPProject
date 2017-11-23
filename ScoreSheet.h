@@ -18,9 +18,9 @@ class ScoreSheet {
 	friend ostream& operator<<(ostream& out, const ScoreSheet& sheet);
 public:
    // Player getPlayer();
-	ScoreSheet();
+	ScoreSheet(string name);
 
-    bool score(RollOfDice rod, Colour color);
+    bool score(RollOfDice rod, Colour color, int position);
    // int setTotal();
     virtual ~ScoreSheet();
 private:

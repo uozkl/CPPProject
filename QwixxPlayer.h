@@ -19,7 +19,7 @@ public:
     void inputBeforeRoll(RollOfDice &rod);
     void inputAfterRoll(RollOfDice &rod);
 private:
-    QwixxScoreSheet qxss;
+    QwixxScoreSheet *qxss;
 };
 
 #endif /* QWIXXPLAYER_H */

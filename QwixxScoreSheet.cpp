@@ -10,21 +10,24 @@
 #include <iostream>
 using namespace std;
 
-QwixxScoreSheet::QwixxScoreSheet() {
-}
+//QwixxScoreSheet::QwixxScoreSheet(QwixxRow row1,QwixxRow row2,QwixxRow row3 ) {
+//	qxrow1 = row1;
+//	qxrow2 = row2;
+//	qxrow3 = row3;
+//}
 
-QwixxScoreSheet::QwixxScoreSheet(const QwixxScoreSheet& orig) {
-}
+//QwixxScoreSheet::QwixxScoreSheet(const QwixxScoreSheet& orig) {
+//}
 
-QwixxScoreSheet::~QwixxScoreSheet() {
-}
+//QwixxScoreSheet::~QwixxScoreSheet() {
+//}
 ostream& operator<<(ostream& out, const QwixxScoreSheet& sheet){
 
-	out<<"Player name:"<<sheet.name<<endl<<"------------------------------"<<endl;
-	out<<sheet.row1<<endl<<"------------------------------"<<endl;
-	out<<sheet.row2<<endl<<"------------------------------"<<endl;
-	out<<sheet.row3<<endl<<"------------------------------"<<endl;
-	out<<"Failed throws:"<<sheet.failed<<endl;
+	out<<"Player name:"<<endl<<"------------------------------"<<endl;
+//	out<<sheet.qxrow1<<endl<<"------------------------------"<<endl;
+//	out<<sheet.qxrow2<<endl<<"------------------------------"<<endl;
+//	out<<sheet.qxrow3<<endl<<"------------------------------"<<endl;
+	out<<"Failed throws:"<<endl;
 
 	return out;
 }

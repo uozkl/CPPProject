@@ -7,24 +7,22 @@
  */
 
 #include "QwintoScoreSheet.h"
+#include "ScoreSheet.h"
 #include <iostream>
 using namespace std;
 
-QwintoScoreSheet::QwintoScoreSheet() {
-}
+//QwintoScoreSheet::QwintoScoreSheet(){
+//}
+//
+//QwintoScoreSheet::QwintoScoreSheet(const QwintoScoreSheet& orig) {
+//}
+//
+//QwintoScoreSheet::~QwintoScoreSheet() {
+//}
+//
+ostream& operator<<(ostream& out, const QwintoScoreSheet& sheet){
 
-QwintoScoreSheet::QwintoScoreSheet(const QwintoScoreSheet& orig) {
-}
-
-QwintoScoreSheet::~QwintoScoreSheet() {
-}
-
- ostream& operator<<(ostream& out, const QwintoScoreSheet& sheet){
-
-	 out<<"Player name:"<<sheet.name<<endl<<"------------------------------"<<endl;
-	 out<<sheet.row1<<endl<<"------------------------------"<<endl;
-	 out<<sheet.row2<<endl<<"------------------------------"<<endl;
-	 out<<sheet.row3<<endl<<"------------------------------"<<endl;
-	 out<<"Failed throws:"<<sheet.failed<<endl;
+out<<"Player name:"<<endl<<"------------------------------"<<endl<<"------------------------------"<<endl<<"------------------------------"<<endl<<"------------------------------"<<endl;
+out<<"Failed throws:"<<endl;
 	 return out;
- }
+}

@@ -19,7 +19,7 @@ public:
     void inputBeforeRoll(RollOfDice &rod);
     void inputAfterRoll(RollOfDice &rod);
 private:
-    QwintoScoreSheet qtss;
+    QwintoScoreSheet *qtss;
 };
 
 #endif /* QWINTOPLAYER_H */
