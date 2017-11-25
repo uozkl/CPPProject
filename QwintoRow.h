@@ -3,15 +3,17 @@
  * File:   QwintoRow.h
  * Author: Tony
  *
- * Created on 2017年11月17日, 下午2:55
+ * Created on
  */
 
 #ifndef QWINTOROW_H
 #define QWINTOROW_H
+#include"Dice.h"
 
+template < class Colour>
 class QwintoRow {
 public:
-    QwintoRow();
+    QwintoRow<Colour>();
     QwintoRow(const QwintoRow& orig);
     virtual ~QwintoRow();
 private:

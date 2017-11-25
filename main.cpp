@@ -13,14 +13,20 @@ int main(){
 	cout<<"Please choose game version (1-Qwinto, 2-Qwixx):"<<endl;
 	int version;
 	cin>>version;
+	cout<<"Please enter your name:"<<endl;
+	string playerName;
+	cin>>playerName;
 	if (version == 1){
-		QwintoScoreSheet *qtss;
+		QwintoScoreSheet qtss;
+		qtss.setName(playerName);
 		cout<<"Qwinto selected."<<endl;
-		cout<<*qtss;
+		cout<<qtss;
 }else if(version == 2){
-	QwixxScoreSheet *qxss;
+	QwixxScoreSheet qxss;
+	qxss.setName(playerName);
 			cout<<"Qwixx selected."<<endl;
-			cout<<*qxss;
+			cout<<qxss;
+
 }else{
 	//wrong input
 }

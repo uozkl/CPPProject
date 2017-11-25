@@ -23,3 +23,10 @@ using namespace std;
 //ScoreSheet::ScoreSheet(string name){
 //	this->name = name;
 //}
+
+string ScoreSheet::getName() const{
+	return name;
+}
+void ScoreSheet:: setName(string n){
+	name=n;
+}

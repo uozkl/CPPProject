@@ -17,15 +17,15 @@ class QwintoScoreSheet : public ScoreSheet{
 
 	friend ostream& operator<<(ostream& out, const QwintoScoreSheet& sheet);
 public:
-    QwintoScoreSheet();
+   // QwintoScoreSheet();
 
-    QwintoScoreSheet(const QwintoScoreSheet& orig);
-    virtual ~QwintoScoreSheet();
+   // QwintoScoreSheet(const QwintoScoreSheet& orig);
+   // virtual ~QwintoScoreSheet();
 
-private:
-    QwintoRow row1;
-    QwintoRow row2;
-    QwintoRow row3;
+//private:
+//    QwintoRow row1;
+//    QwintoRow row2;
+//    QwintoRow row3;
 };
 
 #endif /* QWINTOSCORESHEET_H */

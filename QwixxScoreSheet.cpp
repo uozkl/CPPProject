@@ -23,11 +23,7 @@ using namespace std;
 //}
 ostream& operator<<(ostream& out, const QwixxScoreSheet& sheet){
 
-	out<<"Player name:"<<endl<<"------------------------------"<<endl;
-//	out<<sheet.qxrow1<<endl<<"------------------------------"<<endl;
-//	out<<sheet.qxrow2<<endl<<"------------------------------"<<endl;
-//	out<<sheet.qxrow3<<endl<<"------------------------------"<<endl;
+	out<<"Player name: "<<sheet.getName()<<endl<<"------------------------------"<<endl<<"------------------------------"<<endl<<"------------------------------"<<endl<<"------------------------------"<<endl;
 	out<<"Failed throws:"<<endl;
-
-	return out;
+		 return out;
 }
