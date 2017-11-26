@@ -8,11 +8,16 @@
 
 #include "QwintoScoreSheet.h"
 #include "ScoreSheet.h"
+#include "QwintoRow.h"
 #include <iostream>
 using namespace std;
 
-//QwintoScoreSheet::QwintoScoreSheet(){
-//}
+
+
+
+QwintoScoreSheet::QwintoScoreSheet(string pname){
+	name=pname;
+}
 //
 //QwintoScoreSheet::QwintoScoreSheet(const QwintoScoreSheet& orig) {
 //}
@@ -20,9 +25,12 @@ using namespace std;
 //QwintoScoreSheet::~QwintoScoreSheet() {
 //}
 
-ostream& operator<<(ostream& out, const QwintoScoreSheet& sheet){
+ostream& operator<<(ostream& os, const QwintoScoreSheet& sheet){
 
-out<<"Player name: "<<sheet.getName()<<endl<<"------------------------------"<<endl<<"------------------------------"<<endl<<"------------------------------"<<endl<<"------------------------------"<<endl;
-out<<"Failed throws:"<<endl;
-	 return out;
+os<<"Player name: "<<sheet.name<<endl<<"-----------------------------------"<<endl;
+os<<sheet.red<<endl<<"-----------------------------------"<<endl;
+os<<sheet.yellow<<endl<<"-----------------------------------"<<endl;
+os<<sheet.blue<<endl<<"-----------------------------------"<<endl;
+os<<"Failed throws:"<<endl;
+	 return os;
 }

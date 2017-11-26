@@ -10,9 +10,6 @@
 
 namespace std {
 
-enum class Colour{
-	RED, BLUE, YELLOW, GREEN, WHITE
-};
 
 class Dice {
 };

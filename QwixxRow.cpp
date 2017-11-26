@@ -3,10 +3,11 @@
  * File:   QwixxRow.cpp
  * Author: Tony
  * 
- * Created on 2017年11月17日, 下午2:56
+ * Created on 2017
  */
 
 #include "QwixxRow.h"
+#include "Colour.h"
 
 QwixxRow::QwixxRow() {
 }

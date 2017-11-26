@@ -1,28 +1,25 @@
 
 /* 
  * File:   ScoreSheet.cpp
- * Author: Tony
+ * Author: Tony, Nathan
  * 
  * Created on
  */
 
 #include "ScoreSheet.h"
 #include <iostream>
+#include<stdio.h>
 using namespace std;
 
-//ostream& operator<<(ostream& out, const ScoreSheet& sheet){
-//
-//	out<<"Player name:"<<endl<<"------------------------------"<<endl;
-//	out<<sheet.row1<<endl<<"------------------------------"<<endl;
-//	out<<sheet.row2<<endl<<"------------------------------"<<endl;
-//	out<<sheet.row3<<endl<<"------------------------------"<<endl;
-//	out<<"Failed throws:"<<endl;
-//	return out;
-//
-//}
-//ScoreSheet::ScoreSheet(string name){
-//	this->name = name;
-//}
+ostream& operator<<(ostream& out, const ScoreSheet& sheet){
+	return out;
+}
+ScoreSheet::ScoreSheet(){
+
+}
+ScoreSheet::ScoreSheet(string pname){
+	name=pname;
+}
 
 string ScoreSheet::getName() const{
 	return name;

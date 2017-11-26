@@ -10,22 +10,22 @@
 #define QWINTOSCORESHEET_H
 #include "QwintoRow.h"
 #include "ScoreSheet.h"
+#include "Colour.h"
 #include<iostream>
 using namespace std;
 
 class QwintoScoreSheet : public ScoreSheet{
 
-	friend ostream& operator<<(ostream& out, const QwintoScoreSheet& sheet);
+	friend ostream& operator<<(ostream& os, const QwintoScoreSheet& sheet);
 public:
-   // QwintoScoreSheet();
+   QwintoScoreSheet(string pname);
 
    // QwintoScoreSheet(const QwintoScoreSheet& orig);
    // virtual ~QwintoScoreSheet();
 
-//private:
-//    QwintoRow row1;
-//    QwintoRow row2;
-//    QwintoRow row3;
+	QwintoRow<Colour::RED> red;
+	QwintoRow<Colour::YELLOW> yellow;
+	QwintoRow<Colour::BLUE> blue;
 };
 
 #endif /* QWINTOSCORESHEET_H */
