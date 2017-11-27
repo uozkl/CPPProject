@@ -22,7 +22,9 @@ public:
 //	virtual ~QwintoRow();
 
 	friend ostream& operator<<(ostream& os, QwintoRow<C> row);
-	//ostream& operator[](ostream& os, const QwintoRow<Colour::RED>& row);
+	int& operator[](int i){
+		return scoreArray[i];
+	}
 
 private:
 	int scoreArray[10]={ };
