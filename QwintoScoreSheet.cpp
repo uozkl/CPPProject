@@ -27,10 +27,10 @@ QwintoScoreSheet::QwintoScoreSheet(string pname){
 
 ostream& operator<<(ostream& os, const QwintoScoreSheet& sheet){
 
-os<<"Player name: "<<sheet.name<<endl<<"-----------------------------------"<<endl;
-os<<sheet.red<<endl<<"-----------------------------------"<<endl;
-os<<sheet.yellow<<endl<<"-----------------------------------"<<endl;
-os<<sheet.blue<<endl<<"-----------------------------------"<<endl;
+os<<"Player name: "<<sheet.name<<endl<<"---------------------------------------------"<<endl;
+os<<sheet.red<<endl<<"---------------------------------------------"<<endl;
+os<<sheet.yellow<<endl<<"---------------------------------------------"<<endl;
+os<<sheet.blue<<endl<<"---------------------------------------------"<<endl;
 os<<"Failed throws:"<<endl;
 	 return os;
 }

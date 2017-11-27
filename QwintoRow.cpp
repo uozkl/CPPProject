@@ -9,20 +9,15 @@
 #include"Colour.h"
 #include<iostream>
 
-//QwintoRow:: QwintoRow() {
-//
-//
-//}
-//
 //QwintoRow::QwintoRow(const QwintoRow& orig) {
 //}
 //
 //QwintoRow::~QwintoRow() {
 //}
 
-ostream& operator<<(ostream& os, const QwintoRow<Colour::RED>& row) {
-
-	os << "Red         ";
+ostream& operator<<(ostream& os, QwintoRow<Colour::RED> row) {
+	row.scoreArray[2] = 3;
+	os << "Red           ";
 	for (int i = 0; i < 10; ++i) {
 		switch (i) {
 		case 1:
@@ -44,61 +39,90 @@ ostream& operator<<(ostream& os, const QwintoRow<Colour::RED>& row) {
 			os << "|";
 			break;
 		}
-		os << " ";
+		if (i != 9) {
+			if (row.scoreArray[i] != 0 && row.scoreArray[i] < 10 ){
+				os <<" "<< row.scoreArray[i];
+			}else if(row.scoreArray[i] >= 10){
+				os<<row.scoreArray[i];
+			} else {
+				os<<"  ";
+			}
+		}
 	}
-	return os;
-}
+		return os;
+	}
 
-ostream& operator<<(ostream& os, const QwintoRow<Colour::YELLOW>& row) {
-	os << "Yellow    ";
+ostream& operator<<(ostream& os, QwintoRow<Colour::YELLOW> row) {
+row.scoreArray[2]=16;
+	os << "Yellow     ";
 	for (int i = 0; i < 10; ++i) {
 		switch (i) {
-		case 5:
+			case 5:
 			os << "|XX|";
 			break;
-		case 6:
+			case 6:
 			os << "%";
 			break;
-		case 7:
+			case 7:
 			os << "%";
 			break;
-		default:
+			default:
 			os << "|";
 			break;
 		}
-		os << " ";
+		if (i != 9) {
+					if (row.scoreArray[i] != 0 && row.scoreArray[i] < 10 ){
+						os <<" "<< row.scoreArray[i];
+					}else if(row.scoreArray[i] >= 10){
+						os<<row.scoreArray[i];
+					} else {
+						os<<"  ";
+					}
+				}
 	}
 
 	return os;
 }
 
+ostream& operator<<(ostream& os, QwintoRow<Colour::BLUE> row) {
 
-ostream& operator<<(ostream& os, const QwintoRow<Colour::BLUE>& row) {
 	os << "Blue    ";
 	for (int i = 0; i < 10; ++i) {
 		switch (i) {
-		case 2:
+			case 2:
 			os << "%";
 			break;
-		case 3:
+			case 3:
 			os << "%";
 			break;
-		case 4:
+			case 4:
 			os << "|XX|";
 			break;
-		case 8:
+			case 8:
 			os << "%";
 			break;
-		case 9:
+			case 9:
 			os << "%";
 			break;
-		default:
+			default:
 			os << "|";
 			break;
 		}
-		os << " ";
+		if (i != 9) {
+					if (row.scoreArray[i] != 0 && row.scoreArray[i] < 10 ){
+						os <<" "<< row.scoreArray[i];
+					}else if(row.scoreArray[i] >= 10){
+						os<<row.scoreArray[i];
+					} else {
+						os<<"  ";
+					}
+				}
 	}
 
 	return os;
 }
+
+//ostream& operator[](ostream& os, const QwintoRow<Colour::RED>& row){
+
+//}
 

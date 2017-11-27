@@ -15,14 +15,17 @@ using namespace std;
 
 template<Colour C> class QwintoRow {
 public:
-//	QwintoRow();
+//	QwintoRow(){
+//		scoreArray[10] ={" "," "," "," "," "," "," "," "," "," ",};
+//	}
 //	QwintoRow(const QwintoRow& orig);
 //	virtual ~QwintoRow();
 
-	friend ostream& operator<<(ostream& os, const QwintoRow<C>& row);
+	friend ostream& operator<<(ostream& os, QwintoRow<C> row);
+	//ostream& operator[](ostream& os, const QwintoRow<Colour::RED>& row);
 
 private:
-	array<int, 10> qtrow;
+	int scoreArray[10]={ };
 };
 
 #endif /* QWINTOROW_H */
