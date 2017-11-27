@@ -18,11 +18,10 @@ int main() {
 	cin >> playerName;
 	if (version == 1) {
 		QwintoScoreSheet *qtss = new QwintoScoreSheet(playerName);
-		//qtss.setName(playerName);
 		cout << "Qwinto selected." << endl;
 		cout << *qtss;
 	} else if (version == 2) {
-//		QwixxScoreSheet qxss;
+		QwixxScoreSheet *qxss;
 //		qxss.setName(playerName);
 //		cout << "Qwixx selected." << endl;
 //		cout << qxss;

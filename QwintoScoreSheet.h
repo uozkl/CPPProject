@@ -20,9 +20,6 @@ class QwintoScoreSheet : public ScoreSheet{
 public:
    QwintoScoreSheet(string pname);
 
-   // QwintoScoreSheet(const QwintoScoreSheet& orig);
-   // virtual ~QwintoScoreSheet();
-
 	QwintoRow<Colour::RED> red;
 	QwintoRow<Colour::YELLOW> yellow;
 	QwintoRow<Colour::BLUE> blue;

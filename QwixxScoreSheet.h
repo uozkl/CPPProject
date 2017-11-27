@@ -11,19 +11,21 @@
 #include "QwixxRow.h"
 #include "ScoreSheet.h"
 #include<iostream>
+#include<vector>
+#include<list>
 using namespace std;
 
 class QwixxScoreSheet : public ScoreSheet {
 
-	friend ostream& operator<<(ostream& out, const QwixxScoreSheet& sheet);
+	friend ostream& operator<<(ostream& os, const QwixxScoreSheet& sheet);
 public:
-    //QwixxScoreSheet(QwixxRow row1, QwixxRow row2,QwixxRow row3);
-   // QwixxScoreSheet(const QwixxScoreSheet& orig);
-  //  virtual ~QwixxScoreSheet();
+    QwixxScoreSheet(string pname);
+
 private:
-//    QwixxRow qxrow1;
-//    QwixxRow qxrow2;
-//    QwixxRow qxrow3;
+    QwixxRow<vector<int>,Colour::RED> red;
+    QwixxRow<vector<int>,Colour::YELLOW> yellow;
+    QwixxRow<list<int>,Colour::GREEN> green;
+    QwixxRow<list<int>,Colour::BLUE> blue;
 };
 
 #endif /* QWIXXSCORESHEET_H */

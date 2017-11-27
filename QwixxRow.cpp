@@ -9,12 +9,12 @@
 #include "QwixxRow.h"
 #include "Colour.h"
 
-QwixxRow::QwixxRow() {
-}
-
-QwixxRow::QwixxRow(const QwixxRow& orig) {
-}
-
-QwixxRow::~QwixxRow() {
-}
-
+//QwixxRow::QwixxRow() {
+//}
+//
+//QwixxRow::QwixxRow(const QwixxRow& orig) {
+//}
+//
+//QwixxRow::~QwixxRow() {
+//}
+//

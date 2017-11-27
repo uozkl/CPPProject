@@ -14,6 +14,8 @@
 using namespace std;
 
 template<Colour C> class QwintoRow {
+
+	friend ostream& operator<<(ostream& os, QwintoRow<C> row);
 public:
 //	QwintoRow(){
 //		scoreArray[10] ={" "," "," "," "," "," "," "," "," "," ",};
@@ -21,7 +23,7 @@ public:
 //	QwintoRow(const QwintoRow& orig);
 //	virtual ~QwintoRow();
 
-	friend ostream& operator<<(ostream& os, QwintoRow<C> row);
+
 	int& operator[](int i){
 		return scoreArray[i];
 	}
