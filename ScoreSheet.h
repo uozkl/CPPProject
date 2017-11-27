@@ -23,8 +23,8 @@ public:
 	ScoreSheet(string pname);
 	string getName() const;
 	void setName(string n);
-    bool score(RollOfDice rod, Colour color, int position);
-   // int setTotal();
+    bool score(RollOfDice rod, Colour color, int position=-1);
+    int setTotal();
    // virtual ~ScoreSheet();
 protected:
     string name;
