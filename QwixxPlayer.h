@@ -13,13 +13,11 @@
 
 class QwixxPlayer : public Player {
 public:
-    QwixxPlayer();
-    QwixxPlayer(const QwixxPlayer& orig);
-    virtual ~QwixxPlayer();
+    QwixxPlayer(QwixxScoreSheet qs);
+
     void inputBeforeRoll(RollOfDice &rod);
     void inputAfterRoll(RollOfDice &rod);
-private:
-    QwixxScoreSheet *qxss;
+    QwixxScoreSheet qxss;
 };
 
 #endif /* QWIXXPLAYER_H */

@@ -21,9 +21,10 @@ ScoreSheet::ScoreSheet(string pname){
 	name=pname;
 }
 
-string ScoreSheet::getName() const{
-	return name;
+bool ScoreSheet:: score(RollOfDice rod, Colour color, int position){
+	return validate(rod, color, position);
 }
-void ScoreSheet:: setName(string n){
-	name=n;
+
+int ScoreSheet:: setTotal(){
+	return calcTotal();
 }

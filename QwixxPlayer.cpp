@@ -8,19 +8,16 @@
 
 #include "QwixxPlayer.h"
 
-QwixxPlayer::QwixxPlayer() {
+QwixxPlayer::QwixxPlayer(QwixxScoreSheet qs) {
+	qxss=qs;
 }
 
-QwixxPlayer::QwixxPlayer(const QwixxPlayer& orig) {
 
-}
 void QwixxPlayer::inputBeforeRoll(RollOfDice &rod){
 
 }
 
 void QwixxPlayer::inputAfterRoll(RollOfDice &rod){
 
-}
-QwixxPlayer::~QwixxPlayer() {
 }
 

@@ -34,3 +34,10 @@ os<<sheet.blue<<endl<<"---------------------------------------------"<<endl;
 os<<"Failed throws:"<<endl;
 	 return os;
 }
+
+bool QwintoScoreSheet:: validate(RollOfDice rod, Colour color, int position){
+
+}
+int QwintoScoreSheet:: calcTotal(){
+
+}

@@ -9,13 +9,8 @@
 #include "QwintoPlayer.h"
 #include "RollOfDice.h"
 
-QwintoPlayer::QwintoPlayer() {
-}
-
-QwintoPlayer::QwintoPlayer(const QwintoPlayer& orig) {
-}
-
-QwintoPlayer::~QwintoPlayer() {
+QwintoPlayer :: QwintoPlayer(QwintoScoreSheet qs){
+	qtss=qs;
 }
 
 void QwintoPlayer:: inputBeforeRoll(RollOfDice &rod){

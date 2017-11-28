@@ -17,12 +17,6 @@ template<Colour C> class QwintoRow {
 
 	friend ostream& operator<<(ostream& os, QwintoRow<C> row);
 public:
-//	QwintoRow(){
-//		scoreArray[10] ={" "," "," "," "," "," "," "," "," "," ",};
-//	}
-//	QwintoRow(const QwintoRow& orig);
-//	virtual ~QwintoRow();
-
 
 	int& operator[](int i){
 		return scoreArray[i];

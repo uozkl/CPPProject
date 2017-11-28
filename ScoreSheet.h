@@ -18,7 +18,7 @@ class ScoreSheet {
 
 	friend ostream& operator<<(ostream& out, const ScoreSheet& sheet);
 public:
-   // Player getPlayer();
+
 	ScoreSheet();
 	ScoreSheet(string pname);
 	string getName() const;
@@ -27,12 +27,14 @@ public:
     int setTotal();
    // virtual ~ScoreSheet();
 protected:
+    virtual bool validate(RollOfDice rod, Colour color, int position) = 0;
+    virtual int calcTotal() = 0;
     string name;
     int failed;
 	int overallScore;
 //protected:
-//    virtual bool validate() = 0;
-//    virtual int calcTotal() = 0;
+
+//
 };
 
 #endif /* SCORESHEET_H */

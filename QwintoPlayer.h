@@ -13,13 +13,11 @@
 
 class QwintoPlayer : public Player {
 public:
-    QwintoPlayer();
-    QwintoPlayer(const QwintoPlayer& orig);
-    virtual ~QwintoPlayer();
+QwintoPlayer(QwintoScoreSheet qs);
     void inputBeforeRoll(RollOfDice &rod);
     void inputAfterRoll(RollOfDice &rod);
-private:
-    QwintoScoreSheet *qtss;
+
+    QwintoScoreSheet qtss;
 };
 
 #endif /* QWINTOPLAYER_H */

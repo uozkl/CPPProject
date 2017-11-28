@@ -18,9 +18,9 @@ class QwixxRow {
 	friend ostream& operator<<(ostream& os, QwixxRow<S,C> row);
 public:
 	QwixxRow();
-
+	QwixxRow<S,C> operator+=(RollOfDice rod);
 private:
-	S scoreArray ={ };
+	S scoreArray[12] ={ };
 
 };
 

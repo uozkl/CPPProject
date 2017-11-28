@@ -19,9 +19,10 @@ class QwixxScoreSheet : public ScoreSheet {
 
 	friend ostream& operator<<(ostream& os, const QwixxScoreSheet& sheet);
 public:
+	QwixxScoreSheet()=default;
     QwixxScoreSheet(string pname);
-
-private:
+    bool validate(RollOfDice rod, Colour color, int position=-1);
+    int calcTotal();
     QwixxRow<vector<int>,Colour::RED> red;
     QwixxRow<vector<int>,Colour::YELLOW> yellow;
     QwixxRow<list<int>,Colour::GREEN> green;
