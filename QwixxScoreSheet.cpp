@@ -21,9 +21,16 @@ QwixxScoreSheet :: QwixxScoreSheet(string pname){
 //}
 
 
-ostream& operator<<(ostream& out, const QwixxScoreSheet& sheet){
+ostream& operator<<(ostream& os, const QwixxScoreSheet& sheet){
 
-	out<<"Player name: "<<sheet.name<<endl<<"------------------------------"<<endl<<"------------------------------"<<endl<<"------------------------------"<<endl<<"------------------------------"<<endl;
-	out<<"Failed throws:"<<endl;
-		 return out;
+	os<<"Player name: "<<sheet.name<<endl<<"------------------------------"<<endl;
+	os<<sheet.red<<"------------------------------"<<endl<<"------------------------------"<<endl<<"------------------------------"<<endl;
+	os<<"Failed throws:"<<endl;
+		 return os;
+}
+bool QwixxScoreSheet:: validate(RollOfDice rod, Colour color, int position){
+
+}
+int QwixxScoreSheet:: calcTotal(){
+
 }

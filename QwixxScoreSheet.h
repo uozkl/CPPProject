@@ -19,7 +19,7 @@ class QwixxScoreSheet : public ScoreSheet {
 
 	friend ostream& operator<<(ostream& os, const QwixxScoreSheet& sheet);
 public:
-	QwixxScoreSheet()=default;
+	//QwixxScoreSheet()=default;
     QwixxScoreSheet(string pname);
     bool validate(RollOfDice rod, Colour color, int position=-1);
     int calcTotal();

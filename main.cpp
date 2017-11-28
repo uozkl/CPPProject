@@ -8,6 +8,7 @@
 #include"QwintoScoreSheet.h"
 #include "QwixxScoreSheet.h"
 #include "QwintoPlayer.h"
+#include"QwixxPlayer.h"
 #include <vector>
 using namespace std;
 
@@ -23,7 +24,7 @@ int main() {
 		cout << "Qwinto selected." << endl;
 		vector<QwintoPlayer> playerVec;
 		for (int i = 1; i <= count; ++i) {
-			cout << "Please enter the name for player "<<i<<": " << endl;
+			cout << "Please enter the name for player " << i << ": " << endl;
 			string playerName;
 			cin >> playerName;
 			QwintoScoreSheet *qtss = new QwintoScoreSheet(playerName);
@@ -34,11 +35,17 @@ int main() {
 			cout << player->qtss;
 		}
 	} else if (version == 2) {
-		//QwixxScoreSheet *qxss;
-		cout << "qwixx not available" << endl;
-//		cout << "Qwixx selected." << endl;
-//		cout << qxss;
-
+		cout << "Qwixx slected." << endl;
+		vector<QwixxPlayer> playerVec;
+		for (int i = 1; i <= count; ++i) {
+			cout << "Please enter the name for player " << i << ": " << endl;
+			string playerName;
+			cin >> playerName;
+			QwixxScoreSheet *qxss = new QwixxScoreSheet(playerName);
+			QwixxPlayer *player = new QwixxPlayer(*qxss);
+			playerVec.push_back(*player);
+			cout << player->qxss;
+		}
 	} else {
 		//wrong input
 	}
