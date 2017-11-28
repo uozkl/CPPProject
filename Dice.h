@@ -1,19 +1,27 @@
 /*
  * Dice.h
  *
- *  Created on: 2017?11?17?
+ *  Created on
  *      Author: Nathan
  */
 
 #ifndef DICE_H_
 #define DICE_H_
-
-namespace std {
+#include "Colour.h"
+#include <ostream>
+using namespace std;
 
 
 class Dice {
+
+	friend ostream& operator<<(ostream& os, const Dice& d);
+public:
+	Dice();
+	int roll();
+	unsigned int face;
+	const Colour color;
 };
 
-} /* namespace std */
+
 
 #endif /* DICE_H_ */
