@@ -7,6 +7,7 @@
  */
 
 #include "RollOfDice.h"
+#include <vector>
 
 RollOfDice::RollOfDice()
 {
@@ -25,7 +26,7 @@ Dice RollOfDice::fetch(int posit)
 	for (int n = posit; n < num; n++) {
 		elems[n] = elems[n + 1];
 	}
-	elems.pop();
+	elems.pop_back();
 	num--;
 	return fetched;
 }

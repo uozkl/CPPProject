@@ -20,13 +20,11 @@ class Dice {
 
 	friend ostream& operator<<(ostream& os, const Dice& d);
 public:
-	Dice(Colour c);
-	int roll();
+
+	//int roll();
 	//unsigned int face;
-	const Colour color;
 	int face = 0;
 	const Colour colour;
-public:
 	Dice(Colour &_colour);
 	void roll();
 	int getFace() { return face; }
