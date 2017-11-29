@@ -25,11 +25,12 @@ public:
 	void setName(string n);
     bool score(RollOfDice rod, Colour color, int position=-1);
     int setTotal();
+    string name;
    // virtual ~ScoreSheet();
 protected:
     virtual bool validate(RollOfDice rod, Colour color, int position) = 0;
     virtual int calcTotal() = 0;
-    string name;
+
     int failed;
 	int overallScore;
 //protected:

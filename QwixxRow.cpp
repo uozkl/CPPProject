@@ -9,11 +9,125 @@
 #include "Colour.h"
 #include <iostream>
 #include <vector>
+#include <list>
 using namespace std;
 
 template<>
 QwixxRow<vector<int>, Colour::RED>::QwixxRow() {
-	scoreArray = vector <int>(12,0);
+	scoreArray = vector <int>(13,0);
+}
+template<>
+QwixxRow<vector<int>, Colour::YELLOW>::QwixxRow() {
+	scoreArray = vector <int>(13,0);
+}
+template<>
+QwixxRow<list<int>, Colour::BLUE>::QwixxRow() {
+	scoreArray =list<int>(12,0);
+}
+template<>
+QwixxRow<list<int>, Colour::GREEN>::QwixxRow() {
+	scoreArray =list<int>(12,0);
+}
+ostream& operator<<(ostream& os, QwixxRow<vector<int>, Colour::RED> row) {
+
+		os << "Red      ";
+		int i = 2;
+		for (int a =0; a<11;++a) {
+			os << "|";
+			if (row.scoreArray[a] != 0) {
+				os << "XX";
+			} else if (i != 0 && i < 10) {
+				os << " " << i;
+			} else if (i >= 10) {
+				os << i;
+			}
+			++i;
+		}
+		os<<"|";
+		if(row.scoreArray[12]!=0){
+			os<<"L";
+		}else{
+			os<<"U";
+		}
+
+	return os;
+}
+ostream& operator<<(ostream& os, QwixxRow<vector<int>, Colour::YELLOW> row) {
+
+		os << "Yellow   ";
+		int i = 2;
+		for (int a =0; a<11;++a) {
+			os << "|";
+			if (row.scoreArray[a] != 0) {
+				os << "XX";
+			} else if (i != 0 && i < 10) {
+				os << " " << i;
+			} else if (i >= 10) {
+				os << i;
+			}
+			++i;
+		}
+		os<<"|";
+		if(row.scoreArray[12]!=0){
+			os<<"L";
+		}else{
+			os<<"U";
+		}
+
+	return os;
+}
+ostream& operator<<(ostream& os, QwixxRow<list<int>, Colour::GREEN> row) {
+
+		os << "Green    ";
+		int i = 12;
+
+		for (auto a: row.scoreArray) {
+			os << "|";
+			if (a != 0) {
+				os << "XX";
+			} else if (i != 0 && i < 10) {
+				os << " " << i;
+			} else if (i >= 10) {
+				os << i;
+			}
+			if(i==2){break;}
+			--i;
+		}
+		os<<"|";
+		if(row.scoreArray.back()!=0){
+			os<<"L";
+		}else{
+			os<<"U";
+		}
+
+	return os;
+}
+
+ostream& operator<<(ostream& os, QwixxRow<list<int>, Colour::BLUE> row) {
+
+		os << "Blue     ";
+		int i = 12;
+
+		for (auto a: row.scoreArray) {
+			os << "|";
+			if (a != 0) {
+				os << "XX";
+			} else if (i != 0 && i < 10) {
+				os << " " << i;
+			} else if (i >= 10) {
+				os << i;
+			}
+			if(i==2){break;}
+			--i;
+		}
+		os<<"|";
+		if(row.scoreArray.back()!=0){
+			os<<"L";
+		}else{
+			os<<"U";
+		}
+
+	return os;
 }
 //
 //QwixxRow::QwixxRow(const QwixxRow& orig) {
@@ -22,21 +136,5 @@ QwixxRow<vector<int>, Colour::RED>::QwixxRow() {
 //QwixxRow::~QwixxRow() {
 //}
 //
-template<class S, Colour C>
- ostream& operator<<(ostream& os, QwixxRow<vector<int>, Colour::RED> row) {
-	os << "Red      ";
-	int i=2;
-	for (int a : row.scoreArray) {
-		os << "|";
-		if (a!=0){
-			os<<"XX";
-		}else if (i != 0 && i < 10) {
-			os << " " << i;
-		} else if (i >= 10) {
-			os << i;
-	++i;
-		}
-	}
 
-	return os;
-}
+

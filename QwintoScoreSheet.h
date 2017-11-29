@@ -16,7 +16,7 @@ using namespace std;
 
 class QwintoScoreSheet : public ScoreSheet{
 
-	friend ostream& operator<<(ostream& os, const QwintoScoreSheet& sheet);
+	friend ostream& operator<<(ostream& os, const QwintoScoreSheet& qtsheet);
 public:
 	QwintoScoreSheet()=default;
    QwintoScoreSheet(string pname);

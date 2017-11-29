@@ -10,6 +10,7 @@
 #define QWIXXSCORESHEET_H
 #include "QwixxRow.h"
 #include "ScoreSheet.h"
+#include "Colour.h"
 #include<iostream>
 #include<vector>
 #include<list>
@@ -17,9 +18,9 @@ using namespace std;
 
 class QwixxScoreSheet : public ScoreSheet {
 
-	friend ostream& operator<<(ostream& os, const QwixxScoreSheet& sheet);
+	friend  ostream& operator<<(ostream& os, const QwixxScoreSheet &qxsheet);
 public:
-	//QwixxScoreSheet()=default;
+	QwixxScoreSheet()=default;
     QwixxScoreSheet(string pname);
     bool validate(RollOfDice rod, Colour color, int position=-1);
     int calcTotal();

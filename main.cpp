@@ -30,7 +30,6 @@ int main() {
 			QwintoScoreSheet *qtss = new QwintoScoreSheet(playerName);
 			QwintoPlayer *player = new QwintoPlayer(*qtss);
 			playerVec.push_back(*player);
-			//qtss= new QwintoScoreSheet(playerName);
 
 			cout << player->qtss;
 		}

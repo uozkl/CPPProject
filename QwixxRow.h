@@ -12,17 +12,17 @@
 #include <iostream>
 using namespace std;
 
-template<class S, Colour C>
+template<class T, Colour C>
 class QwixxRow {
 
-
-	friend ostream& operator<<(ostream& os, QwixxRow<S,C> row);
+	friend ostream& operator<<(ostream& os, QwixxRow<T, C> row)
+	;
 public:
 	QwixxRow();
 
-	QwixxRow<S,C> operator+=(RollOfDice rod);
+	QwixxRow<T, C> operator+=(RollOfDice rod);
 private:
-	S scoreArray;
+	T scoreArray;
 
 };
 
