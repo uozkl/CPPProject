@@ -6,14 +6,17 @@
  */
 
 #include "Dice.h"
+#include "RandomDice.h"
 
-namespace std {
+using namespace std;
 	Dice::Dice(Colour &_colour):colour(_colour)
 	{
 	}
 	void Dice::roll()
 	{
-		face = new RandomDice->getDice;
+		RandomDice rd;
+		face = rd.getDice();
+
 	}
 	ostream & Dice::operator<<(ostream & os)
 	{
@@ -21,4 +24,4 @@ namespace std {
 		os << colorNames[(int)colour] << " " + face << endl;
 		return os;
 	}
-} /* namespace std */
+

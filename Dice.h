@@ -21,7 +21,7 @@ class Dice {
 	friend ostream& operator<<(ostream& os, const Dice& d);
 public:
 
-	int roll();
+
 
 	int face = 0;
 	const Colour colour;

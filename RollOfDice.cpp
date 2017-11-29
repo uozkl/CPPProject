@@ -19,22 +19,22 @@ void RollOfDice::add(Dice & _dice)
 	num++;
 }
 
-//Dice RollOfDice::fetch(int posit)
-//{
-//	if (posit>=num|posit<0)throw out_of_range("Position out of range");
-//	Dice fetched = elems[posit];
-//	for (int n = posit; n < num; n++) {
-//		elems[n] = elems[n + 1];
-//	}
-//	elems.pop_back();
-//	num--;
-//	return fetched;
-//}
+Dice RollOfDice::fetch(int posit)
+{
+	if (posit>=num|posit<0)throw out_of_range("Position out of range");
+	Dice fetched = elems[posit];
+	for (int n = posit; n < num; n++) {
+		elems[n] = elems[n + 1];
+	}
+	elems.pop_back();
+	num--;
+	return fetched;
+}
 
 void RollOfDice::roll()
 {
 	for (Dice it : elems) {
-		//it.roll();
+		it.roll();
 	}
 }
 
