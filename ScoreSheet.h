@@ -18,7 +18,7 @@ class ScoreSheet {
 
 	friend ostream& operator<<(ostream& out, const ScoreSheet& sheet);
 public:
-
+   // Player getPlayer();
 	ScoreSheet();
 	ScoreSheet(string pname);
 	string getName() const;
