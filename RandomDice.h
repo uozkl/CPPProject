@@ -3,20 +3,21 @@
  * File:   RandomDice.h
  * Author: Tony
  *
- * Created on 2017年11月17日, 下午2:55
+ * Created on
  */
 
 #ifndef RANDOMDICE_H
 #define RANDOMDICE_H
 #include <random>
 
-class RandomDice {
-    int dice;
-public:
-    RandomDice();
-    int getDice(){
-        return dice;
-    }
+ struct  RandomDice {
+
+	 	// static std::random_device randDev;
+	        static std::mt19937 generator;
+	        static std::uniform_int_distribution<unsigned> distribution;
+    //RandomDice();
+ static int getDice();
+
 };
 
 #endif /* RANDOMDICE_H */

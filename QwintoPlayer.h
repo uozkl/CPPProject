@@ -16,7 +16,7 @@ public:
 QwintoPlayer(QwintoScoreSheet qs);
     void inputBeforeRoll(RollOfDice &rod);
     void inputAfterRoll(RollOfDice &rod);
-
+   // Dice setDice(string str);
     QwintoScoreSheet qtss;
 };
 

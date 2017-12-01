@@ -7,6 +7,8 @@
  */
 
 #include "QwixxPlayer.h"
+#include<iostream>
+using namespace std;
 
 QwixxPlayer::QwixxPlayer(QwixxScoreSheet qs) {
 	qxss=qs;
@@ -14,7 +16,9 @@ QwixxPlayer::QwixxPlayer(QwixxScoreSheet qs) {
 
 
 void QwixxPlayer::inputBeforeRoll(RollOfDice &rod){
-
+	if (active ==true){
+		cout<<"Please select number of dice to roll :"<<endl;
+	}
 }
 
 void QwixxPlayer::inputAfterRoll(RollOfDice &rod){

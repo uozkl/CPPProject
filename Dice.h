@@ -22,14 +22,14 @@ class Dice {
 public:
 
 
-
+	static RandomDice rd;
 	int face = 0;
 	const Colour colour;
 	Dice(Colour &_colour);
-	void roll();
+	 void roll();
 	int getFace() { return face; }
 	Colour getColour() { return colour; }
-	ostream& operator<<(ostream &os);
+	//Dice &operator=(const Dice& rhs);
 
 };
 

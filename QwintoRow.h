@@ -22,7 +22,7 @@ public:
 		return scoreArray[i];
 	}
 
-private:
+
 	int scoreArray[10]={ };
 };
 

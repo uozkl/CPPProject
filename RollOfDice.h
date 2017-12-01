@@ -14,16 +14,19 @@ using namespace std;
 class RollOfDice {
 	vector<Dice>elems;
 	int num = 0;
+	friend ostream& operator<<(ostream &os, RollOfDice rod);
 public:
 	RollOfDice();
 	void add(Dice &_dice);
 	Dice fetch(int posit);
 	void roll();
 	RollOfDice pair(Dice &diceA, Dice &diceB);
-	int *begin();
-	int *end();
-	operator int() const;
-	ostream& operator<<(ostream &os);
+	Dice *begin();
+	Dice *end();
+	 operator int() const;
+
+	//Dice setDice(string ipt);
+
 };
 
 #endif /* ROLLOFDICE_H */

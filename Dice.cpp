@@ -14,14 +14,39 @@ using namespace std;
 	}
 	void Dice::roll()
 	{
-		RandomDice rd;
-		face = rd.getDice();
 
+		face = rd.getDice();
+//return face;
 	}
-	ostream & Dice::operator<<(ostream & os)
+//	Dice& Dice:: operator=(const Dice& rhs){
+//		colour(rhs.colour);
+//		face = rhs.face;
+//		return *this;
+//	}
+	ostream& operator<<(ostream& os, const Dice& d)
 	{
-		char *colorNames[] = { "Red","Blue","Yellow","Green","White" };
-		os << colorNames[(int)colour] << " " + face << endl;
+
+		 //char *colorNames[] = { "Red","Blue","Yellow","Green","White" };
+		string colourOut;
+		switch(d.colour){
+		case Colour::RED:
+			colourOut="Red";
+			break;
+		case Colour::BLUE:
+			colourOut = "Blue";
+			break;
+		case Colour::YELLOW:
+			colourOut="Yellow";
+			break;
+		case Colour::GREEN:
+			colourOut = "Green";
+			break;
+		case Colour::WHITE:
+			colourOut = "White";
+			break;
+		}
+
+		os << colourOut << " "<< d.face;
 		return os;
 	}
 

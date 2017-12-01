@@ -19,21 +19,21 @@ void RollOfDice::add(Dice & _dice)
 	num++;
 }
 
-Dice RollOfDice::fetch(int posit)
-{
-	if (posit>=num|posit<0)throw out_of_range("Position out of range");
-	Dice fetched = elems[posit];
-	for (int n = posit; n < num; n++) {
-		elems[n] = elems[n + 1];
-	}
-	elems.pop_back();
-	num--;
-	return fetched;
-}
+//Dice RollOfDice::fetch(int posit)
+//{
+//	if (posit>=num|posit<0)throw out_of_range("Position out of range");
+//	Dice fetched = elems[posit];
+//	for (int n = posit; n < num; n++) {
+//		elems[n] = elems[n + 1];
+//	}
+//	elems.pop_back();
+//	num--;
+//	return fetched;
+//}
 
 void RollOfDice::roll()
 {
-	for (Dice it : elems) {
+	for (Dice &it : elems) {
 		it.roll();
 	}
 }
@@ -46,13 +46,13 @@ RollOfDice RollOfDice::pair(Dice & diceA, Dice & diceB)
 	return outpt;
 }
 
-int * RollOfDice::begin()
+Dice * RollOfDice::begin()
 {
 	if (num <= 0)throw out_of_range("Roll size out of range");
 	return &elems[0];
 }
 
-int * RollOfDice::end()
+Dice * RollOfDice::end()
 {
 	if (num <= 0)throw out_of_range("Roll size out of range");
 	return &elems[num];
@@ -63,13 +63,18 @@ RollOfDice::operator int() const
 	int sum = 0;
 	for (Dice a : elems) {
 		sum += a.getFace();
+
 	}
+	return sum;
 }
 
-ostream & RollOfDice::operator<<(ostream & os)
+ostream& operator<<(ostream & os, RollOfDice rod)
 {
-	for (Dice a : elems) {
-		os<<a;
+	for (Dice a : rod) {
+		os<<a<<endl;
 	}
 	return os;
 }
+
+
+

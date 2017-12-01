@@ -16,7 +16,6 @@
 //}
 
 ostream& operator<<(ostream& os, QwintoRow<Colour::RED> row) {
-	row[2] = 3;
 	os << "Red           ";
 	for (int i = 0; i < 10; ++i) {
 		switch (i) {
@@ -53,7 +52,6 @@ ostream& operator<<(ostream& os, QwintoRow<Colour::RED> row) {
 	}
 
 ostream& operator<<(ostream& os, QwintoRow<Colour::YELLOW> row) {
-row[2]=16;
 	os << "Yellow     ";
 	for (int i = 0; i < 10; ++i) {
 		switch (i) {
@@ -85,7 +83,6 @@ row[2]=16;
 }
 
 ostream& operator<<(ostream& os, QwintoRow<Colour::BLUE> row) {
-	row[2]=12;
 	os << "Blue    ";
 	for (int i = 0; i < 10; ++i) {
 		switch (i) {

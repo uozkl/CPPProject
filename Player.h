@@ -17,7 +17,6 @@ public:
     virtual ~Player();
     virtual void inputBeforeRoll(RollOfDice &rod) = 0;
     virtual void inputAfterRoll(RollOfDice &rod) = 0;
-private:
     bool active = false;
 	};
 

@@ -13,6 +13,7 @@
 using namespace std;
 
 int main() {
+	RollOfDice rd;
 	cout << "Please choose game version (1-Qwinto, 2-Qwixx): " << endl;
 	int version;
 	cin >> version;
@@ -30,24 +31,45 @@ int main() {
 			QwintoScoreSheet *qtss = new QwintoScoreSheet(playerName);
 			QwintoPlayer *player = new QwintoPlayer(*qtss);
 			playerVec.push_back(*player);
+		}
+		for (auto &a : playerVec) {
+			a.active = true;
+			a.inputBeforeRoll(rd);
+			rd.roll();
+			cout << rd << endl;
+			cout << a.qtss;
 
-			cout << player->qtss;
+			a.inputAfterRoll(rd);
+			cout << a.qtss;
+			for (auto &b : playerVec) {
+				if (b.active == false) {
+					cout << b.qtss;
+					b.inputAfterRoll(rd);
+					cout << b.qtss;
+				}
+			}
+			a.active = false;
 		}
-	} else if (version == 2) {
-		cout << "Qwixx slected." << endl;
-		vector<QwixxPlayer> playerVec;
-		for (int i = 1; i <= count; ++i) {
-			cout << "Please enter the name for player " << i << ": " << endl;
-			string playerName;
-			cin >> playerName;
-			QwixxScoreSheet *qxss = new QwixxScoreSheet(playerName);
-			QwixxPlayer *player = new QwixxPlayer(*qxss);
-			playerVec.push_back(*player);
-			cout << player->qxss;
-		}
-	} else {
-		//wrong input
 	}
-	return 0;
+	//cout << player->qtss;
+
+
+else if (version == 2) {
+	cout << "Qwixx slected." << endl;
+	vector<QwixxPlayer> playerVec;
+	for (int i = 1; i <= count; ++i) {
+		cout << "Please enter the name for player " << i << ": " << endl;
+		string playerName;
+		cin >> playerName;
+		QwixxScoreSheet *qxss = new QwixxScoreSheet(playerName);
+		QwixxPlayer *player = new QwixxPlayer(*qxss);
+		playerVec.push_back(*player);
+		cout << player->qxss;
+	}
+} else {
+	//wrong input
+}
+
+return 0;
 }
 

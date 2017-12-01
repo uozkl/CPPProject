@@ -37,6 +37,7 @@ os<<"Failed throws:"<<endl;
 
 bool QwintoScoreSheet:: validate(RollOfDice rod, Colour color, int position){
 
+	return true;
 }
 int QwintoScoreSheet:: calcTotal(){
 
