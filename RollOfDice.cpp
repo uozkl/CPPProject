@@ -1,4 +1,3 @@
-
 /* 
  * File:   RollOfDice.cpp
  * Author: Tony
@@ -9,12 +8,10 @@
 #include "RollOfDice.h"
 #include <vector>
 
-RollOfDice::RollOfDice()
-{
+RollOfDice::RollOfDice() {
 }
 
-void RollOfDice::add(Dice & _dice)
-{
+void RollOfDice::add(Dice & _dice) {
 	elems.push_back(_dice);
 	num++;
 }
@@ -31,35 +28,32 @@ void RollOfDice::add(Dice & _dice)
 //	return fetched;
 //}
 
-void RollOfDice::roll()
-{
+void RollOfDice::roll() {
 	for (Dice &it : elems) {
 		it.roll();
 	}
 }
 
-RollOfDice RollOfDice::pair(Dice & diceA, Dice & diceB)
-{
+RollOfDice RollOfDice::pair(Dice & diceA, Dice & diceB) {
 	RollOfDice outpt;
 	outpt.add(diceA);
 	outpt.add(diceB);
 	return outpt;
 }
 
-Dice * RollOfDice::begin()
-{
-	if (num <= 0)throw out_of_range("Roll size out of range");
+Dice * RollOfDice::begin() {
+	if (num <= 0)
+		throw out_of_range("Roll size out of range");
 	return &elems[0];
 }
 
-Dice * RollOfDice::end()
-{
-	if (num <= 0)throw out_of_range("Roll size out of range");
+Dice * RollOfDice::end() {
+	if (num <= 0)
+		throw out_of_range("Roll size out of range");
 	return &elems[num];
 }
 
-RollOfDice::operator int() const
-{
+RollOfDice::operator int() const {
 	int sum = 0;
 	for (Dice a : elems) {
 		sum += a.getFace();
@@ -68,13 +62,10 @@ RollOfDice::operator int() const
 	return sum;
 }
 
-ostream& operator<<(ostream & os, RollOfDice rod)
-{
+ostream& operator<<(ostream & os, RollOfDice rod) {
 	for (Dice a : rod) {
-		os<<a<<endl;
+		os << a << endl;
 	}
 	return os;
 }
-
-
 

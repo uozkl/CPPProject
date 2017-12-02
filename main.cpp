@@ -13,7 +13,7 @@
 using namespace std;
 
 int main() {
-	RollOfDice rd;
+
 	cout << "Please choose game version (1-Qwinto, 2-Qwixx): " << endl;
 	int version;
 	cin >> version;
@@ -32,7 +32,9 @@ int main() {
 			QwintoPlayer *player = new QwintoPlayer(*qtss);
 			playerVec.push_back(*player);
 		}
+		while(1){
 		for (auto &a : playerVec) {
+			RollOfDice rd;
 			a.active = true;
 			a.inputBeforeRoll(rd);
 			rd.roll();
@@ -49,6 +51,7 @@ int main() {
 				}
 			}
 			a.active = false;
+		}
 		}
 	}
 	//cout << player->qtss;

@@ -7,6 +7,7 @@
 
 #include "QwintoRow.h"
 #include"Colour.h"
+#include "RollOfDice.h"
 #include<iostream>
 
 //QwintoRow::QwintoRow(const QwintoRow& orig) {
@@ -118,8 +119,4 @@ ostream& operator<<(ostream& os, QwintoRow<Colour::BLUE> row) {
 
 	return os;
 }
-
-//ostream& operator[](ostream& os, const QwintoRow<Colour::RED>& row){
-
-//}
 
