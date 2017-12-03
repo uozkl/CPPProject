@@ -24,11 +24,12 @@ public:
 	string getName() const;
 	void setName(string n);
     bool score(RollOfDice rod, Colour color, int position=-1);
-    int setTotal();
+    void setTotal();
     string name;
-    int failed;
-	int overallScore;
-   // virtual ~ScoreSheet();
+    int failed =0;
+	int overallScore=0;
+    //virtual ~ScoreSheet();
+	virtual bool const operator!();
 protected:
     virtual bool validate(RollOfDice rod, Colour color, int position) = 0;
     virtual int calcTotal() = 0;

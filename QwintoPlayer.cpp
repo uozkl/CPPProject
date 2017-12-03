@@ -21,15 +21,34 @@ void QwintoPlayer::inputBeforeRoll(RollOfDice &rod) {
 			<< this->qtss.name << ": " << endl;
 	int num;
 	cin >> num;
-	if (num > 0 && num <= 3) {
+	while (cin.fail()) {
+		cout << "Please enter a number value" << endl;
+		cin.clear();
+		cin.ignore(256, '\n');
+		cout << "Please enter the number of dice(s) to roll for player "
+				<< this->qtss.name << ": " << endl;
+		cin >> num;
+	}
+	if (num == 3) {
+		Colour red =Colour::RED;
+		Dice *r = new Dice(red);
+		rod.add(*r);
+		Colour yellow = Colour::YELLOW;
+		Dice *y = new Dice(yellow);
+		rod.add(*y);
+		Colour blue = Colour::BLUE;
+		Dice *b = new Dice(blue);
+		rod.add(*b);
+	} else if (num > 0 && num <= 2) {
 		for (int i = 0; i < num; ++i) {
-			cout << "Please select the color of dice " << i + 1 << ": " << endl;
+			cout << "Please select the color of dice " << i + 1 << ":(r/y/b)"
+					<< endl;
 			Colour c;
 			string ibcolour;
 			cin >> ibcolour;
-			if (ibcolour == "red") {
+			if (ibcolour == "r") {
 				c = Colour::RED;
-			} else if (ibcolour == "blue") {
+			} else if (ibcolour == "b") {
 				c = Colour::BLUE;
 			} else {
 				c = Colour::YELLOW;
@@ -46,15 +65,21 @@ void QwintoPlayer::inputAfterRoll(RollOfDice &rod) {
 	bool done = false;
 	while (!done) {
 		cout << "Please select which color of row to score for player "
-				<< this->qtss.name << ": " << endl;
+				<< this->qtss.name << ":(r/y/b) " << endl;
 		string iacolour;
 		cin >> iacolour;
 
-		cout << "Please select the index to score: " << endl;
+		cout << "Please select the position to score: " << endl;
 		int iscore;
 		cin >> iscore;
-
-		if (iacolour == "red") {
+		while (cin.fail()) {
+			cout << "Please enter a number value" << endl;
+			cin.clear();
+			cin.ignore(256, '\n');
+			cout << "Please select the position to score: " << endl;
+			cin >> iscore;
+		}
+		if (iacolour == "r") {
 			if (!qtss.score(rod, Colour::RED, iscore)) {
 				cout << "Try again?(y/n)" << endl;
 				string selection;
@@ -63,12 +88,11 @@ void QwintoPlayer::inputAfterRoll(RollOfDice &rod) {
 					done = true;
 					this->qtss.failed++;
 				}
-			}else{
-					done=true;
-				}
+			} else {
+				done = true;
+			}
 
-
-		} else if (iacolour == "blue") {
+		} else if (iacolour == "b") {
 			if (!qtss.score(rod, Colour::BLUE, iscore)) {
 				cout << "Try again?(y/n)" << endl;
 				string selection;
@@ -77,11 +101,11 @@ void QwintoPlayer::inputAfterRoll(RollOfDice &rod) {
 					done = true;
 					this->qtss.failed++;
 				}
-			}else{
-					done=true;
-				}
+			} else {
+				done = true;
+			}
 
-		} else {
+		} else if (iacolour == "y") {
 			if (!qtss.score(rod, Colour::YELLOW, iscore)) {
 				cout << "Try again?(y/n)" << endl;
 				string selection;
@@ -90,12 +114,13 @@ void QwintoPlayer::inputAfterRoll(RollOfDice &rod) {
 					done = true;
 					this->qtss.failed++;
 				}
-			}else{
-					done=true;
-				}
+			} else {
+				done = true;
 			}
-
+		} else {
+			cout << "Incorrect colour input.(r/y/b) :(" << endl;
 		}
-	}
 
+	}
+}
 

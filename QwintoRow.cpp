@@ -120,3 +120,4 @@ ostream& operator<<(ostream& os, QwintoRow<Colour::BLUE> row) {
 	return os;
 }
 
+

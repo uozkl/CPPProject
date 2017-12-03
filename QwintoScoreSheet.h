@@ -22,6 +22,7 @@ public:
    QwintoScoreSheet(string pname);
    bool validate(RollOfDice rod, Colour color, int position=-1);
    int calcTotal();
+   bool const operator!();
 	QwintoRow<Colour::RED> red;
 	QwintoRow<Colour::YELLOW> yellow;
 	QwintoRow<Colour::BLUE> blue;

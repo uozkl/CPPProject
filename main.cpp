@@ -32,47 +32,59 @@ int main() {
 			QwintoPlayer *player = new QwintoPlayer(*qtss);
 			playerVec.push_back(*player);
 		}
-		while(1){
+		//++o;
 		for (auto &a : playerVec) {
-			RollOfDice rd;
-			a.active = true;
-			a.inputBeforeRoll(rd);
-			rd.roll();
-			cout << rd << endl;
-			cout << a.qtss;
+			while (!a.qtss) {
+				RollOfDice rd;
+				a.active = true;
+				a.inputBeforeRoll(rd);
+				rd.roll();
+				cout << rd << endl;
+				cout << a.qtss;
 
-			a.inputAfterRoll(rd);
-			cout << a.qtss;
-			for (auto &b : playerVec) {
-				if (b.active == false) {
-					cout << b.qtss;
-					b.inputAfterRoll(rd);
-					cout << b.qtss;
+				a.inputAfterRoll(rd);
+				cout << a.qtss;
+				for (auto &b : playerVec) {
+					if (b.active == false) {
+						cout << b.qtss;
+						b.inputAfterRoll(rd);
+						cout << b.qtss;
+					}
 				}
+				a.active = false;
 			}
-			a.active = false;
-		}
+			string winner;
+			int high;
+			for (auto a : playerVec) {
+				a.qtss.setTotal();
+				if (a.qtss.overallScore > high) {
+					high = a.qtss.overallScore;
+					winner = a.qtss.name;
+				}
+				cout << a.qtss;
+			}
+			cout << "The winner is: " << winner << endl;
+
 		}
 	}
 	//cout << player->qtss;
 
-
-else if (version == 2) {
-	cout << "Qwixx slected." << endl;
-	vector<QwixxPlayer> playerVec;
-	for (int i = 1; i <= count; ++i) {
-		cout << "Please enter the name for player " << i << ": " << endl;
-		string playerName;
-		cin >> playerName;
-		QwixxScoreSheet *qxss = new QwixxScoreSheet(playerName);
-		QwixxPlayer *player = new QwixxPlayer(*qxss);
-		playerVec.push_back(*player);
-		cout << player->qxss;
+	else if (version == 2) {
+		cout << "Qwixx slected." << endl;
+		vector<QwixxPlayer> playerVec;
+		for (int i = 1; i <= count; ++i) {
+			cout << "Please enter the name for player " << i << ": " << endl;
+			string playerName;
+			cin >> playerName;
+			QwixxScoreSheet *qxss = new QwixxScoreSheet(playerName);
+			QwixxPlayer *player = new QwixxPlayer(*qxss);
+			playerVec.push_back(*player);
+			cout << player->qxss;
+		}
+	} else {
+		//wrong input
 	}
-} else {
-	//wrong input
-}
-
-return 0;
+system("PAUSE");
+	return 0;
 }
 

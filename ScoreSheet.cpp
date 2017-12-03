@@ -33,23 +33,27 @@ bool ScoreSheet::score(RollOfDice rod, Colour color, int position) {
 				QwintoScoreSheet *qts = dynamic_cast<QwintoScoreSheet*>(this);
 				switch (color) {
 				case Colour::RED:
-					qts->red[position - 1] = rod;
+					qts->red[position] = rod;
 					return true;
 					break;
 				case Colour::BLUE:
-					qts->blue[position - 1] = rod;
+					qts->blue[position] = rod;
 					return true;
 					break;
 				case Colour::YELLOW:
-					qts->yellow[position - 1] = rod;
+					qts->yellow[position] = rod;
 					return true;
 					break;
 				}
 			}
 		}
 	}
+bool const ScoreSheet:: operator!(){
 
+	return NULL;
+}
 
-int ScoreSheet::setTotal() {
-	return calcTotal();
+void ScoreSheet::setTotal() {
+
+	overallScore= calcTotal();
 }
