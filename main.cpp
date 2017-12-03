@@ -10,6 +10,7 @@
 #include "QwintoPlayer.h"
 #include"QwixxPlayer.h"
 #include <vector>
+#include<unistd.h>
 using namespace std;
 
 int main() {
@@ -32,42 +33,54 @@ int main() {
 			QwintoPlayer *player = new QwintoPlayer(*qtss);
 			playerVec.push_back(*player);
 		}
-		//++o;
-		for (auto &a : playerVec) {
-			while (!a.qtss) {
+		bool gg = false;
+		while (gg == false) {
+			for (auto &a : playerVec) {
 				RollOfDice rd;
 				a.active = true;
 				a.inputBeforeRoll(rd);
 				rd.roll();
 				cout << rd << endl;
-				cout << a.qtss;
-
+				cout << a.qtss << endl;
 				a.inputAfterRoll(rd);
-				cout << a.qtss;
+				cout << a.qtss << endl;
+				if (!a.qtss) {
+					gg = true;
+					break;
+				}
 				for (auto &b : playerVec) {
-					if (b.active == false) {
+					if (!b.active) {
 						cout << b.qtss;
 						b.inputAfterRoll(rd);
-						cout << b.qtss;
+						cout << b.qtss << endl;
+						if (!b.qtss) {
+							gg = true;
+							break;
+						}
 					}
+
 				}
 				a.active = false;
 			}
-			string winner;
-			int high;
-			for (auto a : playerVec) {
-				a.qtss.setTotal();
-				if (a.qtss.overallScore > high) {
-					high = a.qtss.overallScore;
-					winner = a.qtss.name;
-				}
-				cout << a.qtss;
-			}
-			cout << "The winner is: " << winner << endl;
 
 		}
+		string winner;
+		int high = -100;
+		cout << "The game has ended, printing score sheets..." << endl;
+		sleep(3);
+		for (auto a : playerVec) {
+			a.qtss.setTotal();
+			if (a.qtss.overallScore > high) {
+				high = a.qtss.overallScore;
+				winner = a.qtss.name;
+			}
+
+			cout << a.qtss;
+			sleep(3);
+		}
+		cout << "The winner is: " << winner << endl;
+
 	}
-	//cout << player->qtss;
 
 	else if (version == 2) {
 		cout << "Qwixx slected." << endl;
@@ -84,7 +97,7 @@ int main() {
 	} else {
 		//wrong input
 	}
-system("PAUSE");
+	system("PAUSE");
 	return 0;
 }
 

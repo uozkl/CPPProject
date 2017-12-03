@@ -41,28 +41,12 @@ bool QwintoScoreSheet::validate(RollOfDice rod, Colour color, int position) {
 	switch (color) {
 	case Colour::RED:
 		return red.validate(rod, position);
-
-//		if (yellow[position - 1] == rod || blue[position - 2] == rod) {
-//			cout << "Invalid index!" << endl;
-//			return false;
-//		}
-
 		break;
 	case Colour::YELLOW:
 		return yellow.validate(rod, position);
-
-//		if (red[position + 1] == rod || blue[position - 1] == rod) {
-//			cout << "Invalid index!" << endl;
-//			return false;
-//		}
 		break;
 	case Colour::BLUE:
 		return blue.validate(rod, position);
-
-//		if (red[position + 2] == rod || yellow[position + 1] == rod) {
-//			cout << "Invalid index!" << endl;
-//			return false;
-//		}
 		break;
 	}
 
@@ -131,7 +115,7 @@ int QwintoScoreSheet::calcTotal() {
 }
 bool const QwintoScoreSheet::operator!() {
 	if (failed == 4) {
-		return false;
+		return true;
 	}
 	int fullCounter = 0;
 	for (int i = 0; i < 10; ++i) {
@@ -153,7 +137,7 @@ bool const QwintoScoreSheet::operator!() {
 		++fullCounter;
 	}
 	if (fullCounter == 2) {
-		return false;
+		return true;
 	}
-	return true;
+	return false;
 }
