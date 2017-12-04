@@ -40,16 +40,83 @@ bool QwintoScoreSheet::validate(RollOfDice rod, Colour color, int position) {
 
 	switch (color) {
 	case Colour::RED:
-		return red.validate(rod, position);
+		if (!red.validate(rod, position)) {
+			return false;
+		}
+		switch (position) {
+		case 3:
+			if (rod == yellow[4]) {
+				cout << "Numbers in each column must not repeat." << endl;
+				return false;
+			}
+			break;
+		case 4:
+			if (rod == blue[6]) {
+				cout << "Numbers in each column must not repeat." << endl;
+				return false;
+			}
+			break;
+		default:
+			if (rod == yellow[position + 1] || rod == blue[position + 2]) {
+				cout << "Numbers in each column must not repeat." << endl;
+				return false;
+			}
+			break;
+		}
 		break;
 	case Colour::YELLOW:
-		return yellow.validate(rod, position);
+		if (!yellow.validate(rod, position)) {
+			return false;
+		}
+		switch (position) {
+		case 4:
+			if (rod == red[3]) {
+				cout << "Numbers in each column must not repeat." << endl;
+				return false;
+			}
+			break;
+		case 5:
+			if (rod == blue[5]) {
+				cout << "Numbers in each column must not repeat." << endl;
+				return false;
+			}
+			break;
+		default:
+			if (rod == red[position - 1] || rod == blue[position + 1]) {
+				cout << "Numbers in each column must not repeat." << endl;
+				return false;
+			}
+			break;
+		}
+
 		break;
 	case Colour::BLUE:
-		return blue.validate(rod, position);
+		if (!blue.validate(rod, position)) {
+			return false;
+		}
+		switch (position) {
+		case 5:
+			if (rod == yellow[5]) {
+				cout << "Numbers in each column must not repeat." << endl;
+				return false;
+			}
+			break;
+		case 6:
+			if (rod == red[4]) {
+				cout << "Numbers in each column must not repeat." << endl;
+				return false;
+			}
+			break;
+		default:
+			if (rod == red[position - 2] || rod == yellow[position - 1]) {
+				cout << "Numbers in each column must not repeat." << endl;
+				return false;
+			}
+			break;
+		}
 		break;
 	}
-
+	return true;
 }
 
 int QwintoScoreSheet::calcTotal() {

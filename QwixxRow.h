@@ -20,9 +20,14 @@ public:
 	QwixxRow();
 
 	QwixxRow<T, C> operator+=(RollOfDice rod);
-private:
+	bool validate(RollOfDice rd, int pos);
 	T scoreArray;
 
+};
+template<class T, Colour C>
+bool QwixxRow<T,C>:: validate(RollOfDice rd, int pos){
+
+	return true;
 };
 
 #endif /* QWIXXROW_H */
