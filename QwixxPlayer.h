@@ -1,4 +1,3 @@
-
 /* 
  * File:   QwixxPlayer.h
  * Author: Tony
@@ -11,13 +10,13 @@
 #include "RollOfDice.h"
 #include "QwixxScoreSheet.h"
 
-class QwixxPlayer : public Player {
+class QwixxPlayer: public Player {
 public:
-    QwixxPlayer(QwixxScoreSheet qs);
+	QwixxPlayer(QwixxScoreSheet qs);
 
-    void inputBeforeRoll(RollOfDice &rod);
-    void inputAfterRoll(RollOfDice &rod);
-    QwixxScoreSheet qxss;
+	void inputBeforeRoll(RollOfDice &rod);
+	void inputAfterRoll(RollOfDice &rod);
+	QwixxScoreSheet qxss;
 };
 
 #endif /* QWIXXPLAYER_H */

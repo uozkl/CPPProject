@@ -1,4 +1,3 @@
-
 /* 
  * File:   QwixxScoreSheet.h
  * Author: Tony
@@ -16,19 +15,19 @@
 #include<list>
 using namespace std;
 
-class QwixxScoreSheet : public ScoreSheet {
+class QwixxScoreSheet: public ScoreSheet {
 
-	friend  ostream& operator<<(ostream& os, const QwixxScoreSheet &qxsheet);
+	friend ostream& operator<<(ostream& os, const QwixxScoreSheet &qxsheet);
 public:
-	QwixxScoreSheet()=default;
-    QwixxScoreSheet(string pname);
-    bool validate(RollOfDice rod, Colour color, int position=-1);
-    int calcTotal();
-   // bool const operator!();
-    QwixxRow<vector<int>,Colour::RED> red;
-    QwixxRow<vector<int>,Colour::YELLOW> yellow;
-    QwixxRow<list<int>,Colour::GREEN> green;
-    QwixxRow<list<int>,Colour::BLUE> blue;
+	QwixxScoreSheet() = default;
+	QwixxScoreSheet(string pname);
+	bool validate(RollOfDice rod, Colour color, int position = -1);
+	int calcTotal();
+	// bool const operator!();
+	QwixxRow<vector<int>, Colour::RED> red;
+	QwixxRow<vector<int>, Colour::YELLOW> yellow;
+	QwixxRow<list<int>, Colour::GREEN> green;
+	QwixxRow<list<int>, Colour::BLUE> blue;
 };
 
 #endif /* QWIXXSCORESHEET_H */

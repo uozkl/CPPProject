@@ -1,4 +1,3 @@
-
 /* 
  * File:   Player.h
  * Author: Tony
@@ -12,13 +11,13 @@
 
 class Player {
 public:
-    Player();
-    Player(const Player& orig);
-    virtual ~Player();
-    virtual void inputBeforeRoll(RollOfDice &rod) = 0;
-    virtual void inputAfterRoll(RollOfDice &rod) = 0;
-    bool active = false;
-	};
+	Player();
+	Player(const Player& orig);
+	virtual ~Player();
+	virtual void inputBeforeRoll(RollOfDice &rod) = 0;
+	virtual void inputAfterRoll(RollOfDice &rod) = 0;
+	bool active = false;
+};
 
 #endif /* PLAYER_H */
 

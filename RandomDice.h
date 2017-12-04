@@ -1,4 +1,3 @@
-
 /* 
  * File:   RandomDice.h
  * Author: Tony
@@ -10,13 +9,13 @@
 #define RANDOMDICE_H
 #include <random>
 
- struct  RandomDice {
+struct RandomDice {
 
-	 	// static std::random_device randDev;
-	        static std::mt19937 generator;
-	        static std::uniform_int_distribution<unsigned> distribution;
-    //RandomDice();
- static int getDice();
+	// static std::random_device randDev;
+	static std::mt19937 generator;
+	static std::uniform_int_distribution<unsigned> distribution;
+	//RandomDice();
+	static int getDice();
 
 };
 

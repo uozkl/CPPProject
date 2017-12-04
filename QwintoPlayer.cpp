@@ -29,8 +29,8 @@ void QwintoPlayer::inputBeforeRoll(RollOfDice &rod) {
 				<< this->qtss.name << ": " << endl;
 		cin >> num;
 	}
-	if (num == 3) {
-		Colour red =Colour::RED;
+	if (num == 3) {			// if number of dice is 3, roll all dices directly
+		Colour red = Colour::RED;
 		Dice *r = new Dice(red);
 		rod.add(*r);
 		Colour yellow = Colour::YELLOW;
@@ -40,39 +40,61 @@ void QwintoPlayer::inputBeforeRoll(RollOfDice &rod) {
 		Dice *b = new Dice(blue);
 		rod.add(*b);
 	} else if (num > 0 && num <= 2) {
-		for (int i = 0; i < num; ++i) {
-			cout << "Please select the color of dice " << i + 1 << ":(r/y/b)"
+		int i = 0;
+		int rcount = 0;
+		int ycount = 0;
+		int bcount = 0;
+		while (i < num) { // if number of dice is less than 3, ask player which dice they want to roll
+			cout << "Please select the color of dice(s) " << i + 1 << ":(r/y/b)"
 					<< endl;
 			Colour c;
 			string ibcolour;
 			cin >> ibcolour;
+
 			if (ibcolour == "r") {
 				c = Colour::RED;
+				++rcount;
 			} else if (ibcolour == "b") {
 				c = Colour::BLUE;
+				++bcount;
 			} else {
 				c = Colour::YELLOW;
+				++ycount;
 			}
-			Dice *d = new Dice(c);
-			rod.add(*d);
+			if (rcount > 1 || ycount > 1 || bcount > 1) {// check if the color is unique
+				cout << "You can't roll 2 dices with the same color! Try again."
+						<< endl;
+				rcount--;
+				ycount--;
+				bcount--;
+			} else {
+				Dice *d = new Dice(c);
+				rod.add(*d);
+				++i;
+			}
 		}
-
 	} else {
-		cout << "invalid number of dice" << endl;
+		cout << "invalid number of dices" << endl;
 	}
 }
+
 void QwintoPlayer::inputAfterRoll(RollOfDice &rod) {
 	bool done = false;
 	while (!done) {
-		cout << "Please select which color of row to score for player "
-				<< this->qtss.name << ":(r/y/b) " << endl;
+		cout << "Please select which row color to score for player "
+				<< this->qtss.name << "," << endl
+				<< "to skip scoring this number, enter 'fail':(r/y/b/fail) "
+				<< endl;
 		string iacolour;
 		cin >> iacolour;
-
+		if (iacolour == "fail") {
+			this->qtss.failed++;
+			break;
+		}
 		cout << "Please select the position to score: " << endl;
 		int iscore;
 		cin >> iscore;
-		while (cin.fail()) {
+		while (cin.fail()) {			// check if input is a number
 			cout << "Please enter a number value" << endl;
 			cin.clear();
 			cin.ignore(256, '\n');
@@ -117,8 +139,9 @@ void QwintoPlayer::inputAfterRoll(RollOfDice &rod) {
 			} else {
 				done = true;
 			}
+
 		} else {
-			cout << "Incorrect colour input.(r/y/b) :(" << endl;
+			cout << "Incorrect input.(r/y/b) :(" << endl;
 		}
 
 	}

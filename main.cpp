@@ -10,21 +10,22 @@
 #include "QwintoPlayer.h"
 #include"QwixxPlayer.h"
 #include <vector>
-#include<unistd.h>
+#include <windows.h>
+
 using namespace std;
 
 int main() {
 
-	cout << "Please choose game version (1-Qwinto, 2-Qwixx): " << endl;
+	cout << "Please choose the game version (1-Qwinto, 2-Qwixx): " << endl;
 	int version;
 	cin >> version;
-
 	cout << "Please enter the number of players: " << endl;
 	int count;
 	cin >> count;
 	if (version == 1) {
-		cout << "Qwinto selected." << endl;
+		cout << "Qwinto is selected." << endl;
 		vector<QwintoPlayer> playerVec;
+		//create players
 		for (int i = 1; i <= count; ++i) {
 			cout << "Please enter the name for player " << i << ": " << endl;
 			string playerName;
@@ -35,7 +36,7 @@ int main() {
 		}
 		bool gg = false;
 		while (gg == false) {
-			for (auto &a : playerVec) {
+			for (auto &a : playerVec) {	//loop over all the players, ask the active player to roll the dice
 				RollOfDice rd;
 				a.active = true;
 				a.inputBeforeRoll(rd);
@@ -48,7 +49,7 @@ int main() {
 					gg = true;
 					break;
 				}
-				for (auto &b : playerVec) {
+				for (auto &b : playerVec) {	//loop over all inactive players and get their input
 					if (!b.active) {
 						cout << b.qtss;
 						b.inputAfterRoll(rd);
@@ -58,17 +59,23 @@ int main() {
 							break;
 						}
 					}
-
 				}
 				a.active = false;
 			}
-
 		}
+
+		//printing score sheet and find who is the winner
 		string winner;
 		int high = -100;
-		cout << "The game has ended, printing score sheets..." << endl;
-		sleep(3);
-		for (auto a : playerVec) {
+		cout
+				<< "The game has ended, calculating final score and printing score sheets..."
+				<< endl;
+		for (int i = 0; i <= 50; i++) {     // just for fun
+			cout << ">";
+			Sleep(100);
+		}
+		cout << "100%" << endl;
+		for (auto a : playerVec) { // loop over all player and calculate their total score, find out the player with the highest score
 			a.qtss.setTotal();
 			if (a.qtss.overallScore > high) {
 				high = a.qtss.overallScore;
@@ -76,9 +83,9 @@ int main() {
 			}
 
 			cout << a.qtss;
-			sleep(3);
+
 		}
-		cout << "The winner is: " << winner << endl;
+		cout << "The winner is: " << winner << "!" << endl;
 
 	}
 

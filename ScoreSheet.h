@@ -1,4 +1,3 @@
-
 /* 
  * File:   ScoreSheet.h
  * Author: Tony
@@ -18,26 +17,22 @@ class ScoreSheet {
 
 	friend ostream& operator<<(ostream& out, const ScoreSheet& sheet);
 public:
-   // Player getPlayer();
+
 	ScoreSheet();
 	ScoreSheet(string pname);
 	string getName() const;
 	void setName(string n);
-    bool score(RollOfDice rod, Colour color, int position=-1);
-    void setTotal();
-    string name;
-    int failed =0;
-	int overallScore=0;
-    //virtual ~ScoreSheet();
+	bool score(RollOfDice rod, Colour color, int position = -1);
+	void setTotal();
+	string name;
+	int failed = 0;
+	int overallScore = 0;
+
 	virtual bool const operator!();
 protected:
-    virtual bool validate(RollOfDice rod, Colour color, int position) = 0;
-    virtual int calcTotal() = 0;
+	virtual bool validate(RollOfDice rod, Colour color, int position) = 0;
+	virtual int calcTotal() = 0;
 
-
-//protected:
-
-//
 };
 
 #endif /* SCORESHEET_H */

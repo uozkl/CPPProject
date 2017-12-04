@@ -1,4 +1,3 @@
-
 /* 
  * File:   RollOfDice.h
  * Author: Tony
@@ -12,8 +11,7 @@
 #include "Dice.h"
 using namespace std;
 class RollOfDice {
-	vector<Dice>elems;
-	int num = 0;
+
 	friend ostream& operator<<(ostream &os, RollOfDice rod);
 public:
 	RollOfDice();
@@ -23,8 +21,9 @@ public:
 	RollOfDice pair(Dice &diceA, Dice &diceB);
 	Dice *begin();
 	Dice *end();
-	 operator int() const;
-
+	operator int() const;
+	vector<Dice> elems;
+	int num = 0;
 	//Dice setDice(string ipt);
 
 };

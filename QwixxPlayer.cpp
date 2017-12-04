@@ -1,4 +1,3 @@
-
 /* 
  * File:   QwixxPlayer.cpp
  * Author: Tony
@@ -11,17 +10,16 @@
 using namespace std;
 
 QwixxPlayer::QwixxPlayer(QwixxScoreSheet qs) {
-	qxss=qs;
+	qxss = qs;
 }
 
-
-void QwixxPlayer::inputBeforeRoll(RollOfDice &rod){
-	if (active ==true){
-		cout<<"Please select number of dice to roll :"<<endl;
+void QwixxPlayer::inputBeforeRoll(RollOfDice &rod) {
+	if (active == true) {
+		cout << "Please select number of dice to roll :" << endl;
 	}
 }
 
-void QwixxPlayer::inputAfterRoll(RollOfDice &rod){
+void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 
 }
 

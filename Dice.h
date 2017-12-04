@@ -15,24 +15,23 @@ using namespace std;
 #include "Colour.h"
 #include<string>
 
-
 class Dice {
 
 	friend ostream& operator<<(ostream& os, const Dice& d);
 public:
 
-
 	static RandomDice rd;
 	int face = 0;
 	const Colour colour;
 	Dice(Colour &_colour);
-	 void roll();
-	int getFace() { return face; }
-	Colour getColour() { return colour; }
-	//Dice &operator=(const Dice& rhs);
+	void roll();
+	int getFace() {
+		return face;
+	}
+	Colour getColour() {
+		return colour;
+	}
 
 };
-
-
 
 #endif /* DICE_H_ */

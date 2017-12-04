@@ -15,8 +15,7 @@ using namespace std;
 template<class T, Colour C>
 class QwixxRow {
 
-	friend ostream& operator<<(ostream& os, QwixxRow<T, C> row)
-	;
+	friend ostream& operator<<(ostream& os, QwixxRow<T, C> row);
 public:
 	QwixxRow();
 

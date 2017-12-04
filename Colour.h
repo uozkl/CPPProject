@@ -1,5 +1,5 @@
 #pragma once
 
-enum class Colour{
+enum class Colour {
 	RED, BLUE, YELLOW, GREEN, WHITE
 };

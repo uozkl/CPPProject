@@ -1,4 +1,3 @@
-
 /* 
  * File:   QwintoPlayer.h
  * Author: Tony
@@ -11,13 +10,12 @@
 #include "RollOfDice.h"
 #include "QwintoScoreSheet.h"
 
-class QwintoPlayer : public Player {
+class QwintoPlayer: public Player {
 public:
-QwintoPlayer(QwintoScoreSheet qs);
-    void inputBeforeRoll(RollOfDice &rod);
-    void inputAfterRoll(RollOfDice &rod);
-   // Dice setDice(string str);
-    QwintoScoreSheet qtss;
+	QwintoPlayer(QwintoScoreSheet qs);
+	void inputBeforeRoll(RollOfDice &rod);
+	void inputAfterRoll(RollOfDice &rod);
+	QwintoScoreSheet qtss;
 };
 
 #endif /* QWINTOPLAYER_H */

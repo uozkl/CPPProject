@@ -1,9 +1,8 @@
-
 /* 
  * File:   Player.cpp
  * Author: Tony
  * 
- * Created on 2017年11月17日, 下午2:57
+ * Created on
  */
 
 #include "Player.h"

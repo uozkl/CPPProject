@@ -10,12 +10,7 @@
 #include "RollOfDice.h"
 #include<iostream>
 
-//QwintoRow::QwintoRow(const QwintoRow& orig) {
-//}
-//
-//QwintoRow::~QwintoRow() {
-//}
-
+//insertion operator for red row
 ostream& operator<<(ostream& os, QwintoRow<Colour::RED> row) {
 	os << "Red           ";
 	for (int i = 0; i < 10; ++i) {
@@ -40,84 +35,83 @@ ostream& operator<<(ostream& os, QwintoRow<Colour::RED> row) {
 			break;
 		}
 		if (i != 9) {
-			if (row.scoreArray[i] != 0 && row.scoreArray[i] < 10 ){
-				os <<" "<< row.scoreArray[i];
-			}else if(row.scoreArray[i] >= 10){
-				os<<row.scoreArray[i];
+			if (row.scoreArray[i] != 0 && row.scoreArray[i] < 10) {
+				os << " " << row.scoreArray[i];
+			} else if (row.scoreArray[i] >= 10) {
+				os << row.scoreArray[i];
 			} else {
-				os<<"  ";
+				os << "  ";
 			}
 		}
 	}
-		return os;
-	}
-
+	return os;
+}
+//insertion operator for yellow row
 ostream& operator<<(ostream& os, QwintoRow<Colour::YELLOW> row) {
 	os << "Yellow     ";
 	for (int i = 0; i < 10; ++i) {
 		switch (i) {
-			case 5:
+		case 5:
 			os << "|XX|";
 			break;
-			case 6:
+		case 6:
 			os << "%";
 			break;
-			case 7:
+		case 7:
 			os << "%";
 			break;
-			default:
+		default:
 			os << "|";
 			break;
 		}
 		if (i != 9) {
-					if (row.scoreArray[i] != 0 && row.scoreArray[i] < 10 ){
-						os <<" "<< row.scoreArray[i];
-					}else if(row.scoreArray[i] >= 10){
-						os<<row.scoreArray[i];
-					} else {
-						os<<"  ";
-					}
-				}
+			if (row.scoreArray[i] != 0 && row.scoreArray[i] < 10) {
+				os << " " << row.scoreArray[i];
+			} else if (row.scoreArray[i] >= 10) {
+				os << row.scoreArray[i];
+			} else {
+				os << "  ";
+			}
+		}
 	}
 
 	return os;
 }
-
+//insertion operator for blue row
 ostream& operator<<(ostream& os, QwintoRow<Colour::BLUE> row) {
 	os << "Blue    ";
 	for (int i = 0; i < 10; ++i) {
 		switch (i) {
-			case 2:
+		case 2:
 			os << "%";
 			break;
-			case 3:
+		case 3:
 			os << "%";
 			break;
-			case 4:
+		case 4:
 			os << "|XX|";
 			break;
-			case 8:
+		case 8:
 			os << "%";
 			break;
-			case 9:
+		case 9:
 			os << "%";
 			break;
-			default:
+		default:
 			os << "|";
 			break;
 		}
 		if (i != 9) {
-					if (row.scoreArray[i] != 0 && row.scoreArray[i] < 10 ){
-						os <<" "<< row.scoreArray[i];
-					}else if(row.scoreArray[i] >= 10){
-						os<<row.scoreArray[i];
-					} else {
-						os<<"  ";
-					}
-				}
+			if (row.scoreArray[i] != 0 && row.scoreArray[i] < 10) {
+				os << " " << row.scoreArray[i];
+			} else if (row.scoreArray[i] >= 10) {
+				os << row.scoreArray[i];
+			} else {
+				os << "  ";
+			}
+		}
 	}
 
 	return os;
 }
-
 

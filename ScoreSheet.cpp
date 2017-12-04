@@ -24,36 +24,36 @@ ScoreSheet::ScoreSheet(string pname) {
 
 bool ScoreSheet::score(RollOfDice rod, Colour color, int position) {
 
-		if (!validate(rod, color, position)) {
+	if (!validate(rod, color, position)) {
 
-				return false;
+		return false;
 
-		} else {
-			if (typeid(*this) == typeid(QwintoScoreSheet)) {
-				QwintoScoreSheet *qts = dynamic_cast<QwintoScoreSheet*>(this);
-				switch (color) {
-				case Colour::RED:
-					qts->red[position] = rod;
-					return true;
-					break;
-				case Colour::BLUE:
-					qts->blue[position] = rod;
-					return true;
-					break;
-				case Colour::YELLOW:
-					qts->yellow[position] = rod;
-					return true;
-					break;
-				}
+	} else {
+		if (typeid(*this) == typeid(QwintoScoreSheet)) {
+			QwintoScoreSheet *qts = dynamic_cast<QwintoScoreSheet*>(this);
+			switch (color) {
+			case Colour::RED:
+				qts->red[position] = rod;
+				return true;
+				break;
+			case Colour::BLUE:
+				qts->blue[position] = rod;
+				return true;
+				break;
+			case Colour::YELLOW:
+				qts->yellow[position] = rod;
+				return true;
+				break;
 			}
 		}
 	}
-bool const ScoreSheet:: operator!(){
+}
+bool const ScoreSheet::operator!() {
 
 	return NULL;
 }
 
 void ScoreSheet::setTotal() {
 
-	overallScore= calcTotal();
+	overallScore = calcTotal();
 }
