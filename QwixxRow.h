@@ -14,14 +14,13 @@ using namespace std;
 
 template<class T, Colour C>
 class QwixxRow {
-
 	friend ostream& operator<<(ostream& os, QwixxRow<T, C> row);
 public:
 	QwixxRow();
-
 	QwixxRow<T, C> operator+=(RollOfDice rod);
 	bool validate(RollOfDice rd, int pos);
 	T scoreArray;
+	//test2
 
 };
 template<class T, Colour C>
