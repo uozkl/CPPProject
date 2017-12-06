@@ -22,6 +22,7 @@ ScoreSheet::ScoreSheet(string pname) {
 	name = pname;
 }
 
+// first validate if the score is valid, then score the dice accoring to input
 bool ScoreSheet::score(RollOfDice rod, Colour color, int position) {
 
 	if (!validate(rod, color, position)) {
@@ -29,6 +30,7 @@ bool ScoreSheet::score(RollOfDice rod, Colour color, int position) {
 		return false;
 
 	} else {
+		//check this type, cast to corresponding and add score to score sheet
 		if (typeid(*this) == typeid(QwintoScoreSheet)) {
 			QwintoScoreSheet *qts = dynamic_cast<QwintoScoreSheet*>(this);
 			switch (color) {
@@ -45,13 +47,12 @@ bool ScoreSheet::score(RollOfDice rod, Colour color, int position) {
 				return true;
 				break;
 			}
+		}else{
+
 		}
 	}
 }
-bool const ScoreSheet::operator!() {
 
-	return NULL;
-}
 
 void ScoreSheet::setTotal() {
 

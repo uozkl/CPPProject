@@ -14,12 +14,6 @@ using namespace std;
 QwintoScoreSheet::QwintoScoreSheet(string pname) {
 	name = pname;
 }
-//
-//QwintoScoreSheet::QwintoScoreSheet(const QwintoScoreSheet& orig) {
-//}
-//
-//QwintoScoreSheet::~QwintoScoreSheet() {
-//}
 
 ostream& operator<<(ostream& os, const QwintoScoreSheet& qtsheet) {
 
@@ -36,6 +30,7 @@ ostream& operator<<(ostream& os, const QwintoScoreSheet& qtsheet) {
 	return os;
 }
 
+// first validate row, then validate column
 bool QwintoScoreSheet::validate(RollOfDice rod, Colour color, int position) {
 
 	switch (color) {
@@ -118,7 +113,7 @@ bool QwintoScoreSheet::validate(RollOfDice rod, Colour color, int position) {
 	}
 	return true;
 }
-
+//calculate total score, if the row is full, take the last element, else take the number of elements in each row
 int QwintoScoreSheet::calcTotal() {
 	int total = 0;
 	int counter = 0;
@@ -162,6 +157,7 @@ int QwintoScoreSheet::calcTotal() {
 
 	counter = 0;
 	total -= failed * 5;
+// get the bonus entries
 	if (red[2] > 0 && blue[4] > 0 && yellow[3] > 0) {
 		total += red[2];
 	}
@@ -180,6 +176,7 @@ int QwintoScoreSheet::calcTotal() {
 	}
 	return total;
 }
+// if 2 row is full, or failed == 4, end game
 bool const QwintoScoreSheet::operator!() {
 	if (failed == 4) {
 		return true;

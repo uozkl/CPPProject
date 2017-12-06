@@ -18,7 +18,7 @@ QwintoPlayer::QwintoPlayer(QwintoScoreSheet qs) {
 void QwintoPlayer::inputBeforeRoll(RollOfDice &rod) {
 
 	cout << "Please enter the number of dice(s) to roll for player "
-			<< this->qtss.name << ": " << endl;
+			<< this->qtss.getName() << ": " << endl;
 	int num;
 	cin >> num;
 	while (cin.fail()) {
@@ -26,7 +26,7 @@ void QwintoPlayer::inputBeforeRoll(RollOfDice &rod) {
 		cin.clear();
 		cin.ignore(256, '\n');
 		cout << "Please enter the number of dice(s) to roll for player "
-				<< this->qtss.name << ": " << endl;
+				<< this->qtss.getName() << ": " << endl;
 		cin >> num;
 	}
 	if (num == 3) {			// if number of dice is 3, roll all dices directly
@@ -82,7 +82,7 @@ void QwintoPlayer::inputAfterRoll(RollOfDice &rod) {
 	bool done = false;
 	while (!done) {
 		cout << "Please select which row color to score for player "
-				<< this->qtss.name << "," << endl
+				<< this->qtss.getName() << "," << endl
 				<< "to skip scoring this number, enter 'fail':(r/y/b/fail) "
 				<< endl;
 		string iacolour;
@@ -139,7 +139,7 @@ void QwintoPlayer::inputAfterRoll(RollOfDice &rod) {
 			} else {
 				done = true;
 			}
-
+// if input is not a vaild color, loop again
 		} else {
 			cout << "Incorrect input.(r/y/b) :(" << endl;
 		}

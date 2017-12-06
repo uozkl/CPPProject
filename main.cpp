@@ -77,9 +77,9 @@ int main() {
 		cout << "100%" << endl;
 		for (auto a : playerVec) { // loop over all player and calculate their total score, find out the player with the highest score
 			a.qtss.setTotal();
-			if (a.qtss.overallScore > high) {
-				high = a.qtss.overallScore;
-				winner = a.qtss.name;
+			if (a.qtss.getTotal() > high) {
+				high = a.qtss.getTotal();
+				winner = a.qtss.getName();
 			}
 
 			cout << a.qtss;

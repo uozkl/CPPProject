@@ -13,7 +13,6 @@
 class QwixxPlayer: public Player {
 public:
 	QwixxPlayer(QwixxScoreSheet qs);
-
 	void inputBeforeRoll(RollOfDice &rod);
 	void inputAfterRoll(RollOfDice &rod);
 	QwixxScoreSheet qxss;

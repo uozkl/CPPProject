@@ -47,3 +47,7 @@ bool QwixxScoreSheet::validate(RollOfDice rod, Colour color, int position) {
 int QwixxScoreSheet::calcTotal() {
 
 }
+
+bool const QwixxScoreSheet::operator!() {
+
+}

@@ -19,6 +19,7 @@ class QwintoScoreSheet: public ScoreSheet {
 public:
 	QwintoScoreSheet() = default;
 	QwintoScoreSheet(string pname);
+	~QwintoScoreSheet()=default;
 	bool validate(RollOfDice rod, Colour color, int position = -1);
 	int calcTotal();
 	bool const operator!();

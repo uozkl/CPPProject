@@ -33,7 +33,7 @@ void RollOfDice::roll() {
 		it.roll();
 	}
 }
-
+//idk about this
 RollOfDice RollOfDice::pair(Dice & diceA, Dice & diceB) {
 	RollOfDice outpt;
 	outpt.add(diceA);
@@ -52,7 +52,7 @@ Dice * RollOfDice::end() {
 		throw out_of_range("Roll size out of range");
 	return &elems[num];
 }
-
+//conversion operator
 RollOfDice::operator int() const {
 	int sum = 0;
 	for (Dice a : elems) {
