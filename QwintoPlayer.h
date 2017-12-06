@@ -16,6 +16,7 @@ public:
 	void inputBeforeRoll(RollOfDice &rod);
 	void inputAfterRoll(RollOfDice &rod);
 	QwintoScoreSheet qtss;
+	~QwintoPlayer()=default;
 };
 
 #endif /* QWINTOPLAYER_H */
