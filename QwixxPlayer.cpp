@@ -139,7 +139,7 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 					face=d.getFace();
 				}
 				cout<<"You chose "<<colorlist[(int)c]<<" , its face is "<<face<<endl;
-				cout<<"Sum of two sets with white dice is "<<endl<<p1<<" and "<<p2<<endl;
+				cout<<"Sum of two sets with white dice is "<<endl<<p1<<p2<<endl;
 				pass1=qxss.validate(p1,c);
 				pass2=qxss.validate(p2,c);
 				if(p1&p2)cout<<"You can add either one of two set to your "<<colorlist[(int)c]<<" row."<<endl;
@@ -174,12 +174,17 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 				qxss.score(p1,c);
 				cout<<p1<<endl;
 			}
+			//nullllllll
 			else{
 				qxss.score(p2,c);
 				cout<<p2<<endl;
 			}
 		}
-		cout<<"===================================="<<endl;
+		cout<<"DEBUG: score array at yellow:"<<endl;
+		for(auto a:qxss.yellow.scoreArray){
+			cout<<a<<" ";
+		}
+		cout<<endl<<"============================================================="<<endl<<endl;
 	}
 	else{
 		check='f';
@@ -244,7 +249,7 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 				
 				}
 			}
-			cout<<"===================================="<<endl;
+			cout<<endl<<"============================================================="<<endl<<endl;
 		}
 	}
 

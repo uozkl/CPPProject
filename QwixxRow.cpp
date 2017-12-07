@@ -133,11 +133,5 @@ ostream& operator<<(ostream& os, QwixxRow<list<int>, Colour::BLUE> row) {
 
 	return os;
 }
-//
-//QwixxRow::QwixxRow(const QwixxRow& orig) {
-//}
-//
-//QwixxRow::~QwixxRow() {
-//}
-//
+
 

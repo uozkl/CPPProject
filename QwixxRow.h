@@ -35,15 +35,17 @@ bool QwixxRow<T,C>:: validate(RollOfDice rod,int &position){
 };
 template<class T, Colour C>
 QwixxRow<T, C> QwixxRow<T, C>::operator +=(RollOfDice rd) {
-	int position,counter;
+	int position,counter=0;
 	if(!validate(rd,position)){
 		throw "That entry is invalid";
 		}
+	cout<<"DEBUG:POSITION= "<<position<<endl;
 	for (auto &a:scoreArray){
 		if(position==counter){
-		a=rd;
-		break;
-	}++counter;
+			a=rd;
+			break;
+		}
+		++counter;
 	}
 	return *this;
 };
