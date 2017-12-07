@@ -18,29 +18,19 @@ class QwixxRow {
 public:
 	QwixxRow();
 	QwixxRow<T, C> operator+=(RollOfDice rod);
-	bool validate(bool type, int pos);
+	bool validate(RollOfDice rod);
 	T scoreArray;
 
 };
 template<class T, Colour C>
-bool QwixxRow<T,C>:: validate(bool type, int pos){
-	if(type){
-		score;
-		for(int i=0;i<pos;i++){
-			score=scoreArray.next();
-		}
-		if(score==pos)return false;
-		for(int j=pos;j<scoreArray.length;j++){
-			if 存在插入过的值 return false;
-		}
+bool QwixxRow<T,C>:: validate(RollOfDice rod){
+	int position,counter;
+	if (C == Colour::RED || C == Colour::YELLOW) position = rd - 2;
+	else position = 12 - rd;
+	for (auto a : scoreArray) {
+		if (position > counter)++counter;
+		else if (a > 0) return false;
 	}
-	else{
-		if score=scoreArray[pos] return false;
-		for(int j=pos;j<scoreArray.length;j++){
-			if 存在插入过的值 return false;
-		}
-	}
-
 	return true;
 };
 

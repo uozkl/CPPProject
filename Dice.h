@@ -21,6 +21,7 @@ class Dice {
 public:
 
 	static RandomDice rd;
+	Dice();
 	int face = 0;
 	const Colour colour;
 	Dice(Colour &_colour);

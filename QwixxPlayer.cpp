@@ -33,6 +33,7 @@ void QwixxPlayer::inputBeforeRoll(RollOfDice &rod) {
 }
 
 void checkInput(char& _in,QwixxScoreSheet &qxss,bool &undo,bool checkUndo=false){
+	cout<<"Please input a value: "<<endl;
 	string in;
 	bool valid=false;
 	while(!valid){
@@ -73,21 +74,25 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 		else cout<<"if you used all your chances, gameover";
 		char check;
 		//get two white face
-		int face,w1,w2,c1,c2;
-		for(Dice e:rod){
+		int face,w1,w2;
+		Dice *d1=nullptr;
+		Dice *d2=nullptr;
+		for(Dice &e:rod){
 			if(e.getColour()==Colour::WHITE){
-				if(w1==0)w1=e.getFace();
-				else w2=e.getFace();
+				if(d1==nullptr)d1=&e;
+				else d2=&e;
 			}
 		}
+		RollOfDice p1,p2;
 		char finalCommand;
 		int finalSet;
 		bool undo=true;
+		bool pass1,pass2;
+		Colour c;
 		while(undo){
 			undo=false;
 			checkInput(check,qxss,undo);
 			finalCommand=check;
-			Colour c;
 			switch(check){
 				case 'r':c=Colour::RED;
 				case 'y':c=Colour::YELLOW;
@@ -99,17 +104,29 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 					checkInput(check,qxss,undo);
 					break;
 				default: 
-					for(Dice d:rod)if(d.getColour()==c)face=d.getFace();
-					c1=face+w1;
-					c2=face+w2;
+					for(Dice d:rod)if(d.getColour()==c){
+						p1=p1.pair(*d1,d);
+						p2=p2.pair(*d2,d);
+					}
 					cout<<"You chose "<<colorlist[(int)c]<<" , its face is "<<face<<endl;
-					cout<<"Sum of two sets with white dice is "<<c1<<" and "<<c2<<endl;
-					bool pass1,pass2;
+					cout<<"Sum of two sets with white dice is "<<p1<<" and "<<p2<<endl;
+					pass1=qxss.validate(p1,c);
+					pass2=qxss.validate(p2,c);
+					if(p1&p2)cout<<"You can add either one of two set to your "<<colorlist[(int)c]<<" row."<<endl;
+					else if(p1)cout<<"You can add only one set "<<p1<<" to your "<<colorlist[(int)c]<<" row."<<endl;
+					else if(p2)cout<<"You can add only one set "<<p2<<" to your "<<colorlist[(int)c]<<" row."<<endl;
+					else {
+						cout<<"But you can't add any one of the set to your "<<colorlist[(int)c]<<" row."<<endl<<"Please reselect a colcour"<<endl;
+						undo=true;
+						continue;
+					}
 					cout<<"Undo selection? y/n";
 					checkInput(check,qxss,undo,true);
 			}
 		}
-		//
+		if(!(pass1&pass2)){
+			cout<<"Set "<<p2<<" has added to your "<<colorlist[(int)c]<<" row."<<endl;
+		}
 	}
 	else{
 		//TODO

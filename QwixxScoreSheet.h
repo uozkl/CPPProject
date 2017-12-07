@@ -22,17 +22,17 @@ public:
 	QwixxScoreSheet() = default;
 	QwixxScoreSheet(string pname);
 	~QwixxScoreSheet()=default;
-	bool validate(Colour color, int position = -1){
+	bool QwixxScoreSheet::validate(RollOfDice rod, Colour color, int position=-1)override{
 		switch(color){
-			case Colour::RED:return red.validate(true,position);
-			case Colour::YELLOW:return yellow.validate(true,position);
-			case Colour::GREEN:return green.validate(false,position);
-			case Colour::BLUE:return blue.validate(false,position);
+			case Colour::RED:return red.validate(rod);
+			case Colour::YELLOW:return yellow.validate(rod);
+			case Colour::GREEN:return green.validate(rod);
+			case Colour::BLUE:return blue.validate(rod);
 			default:return false;
 		}
 	}
-	int calcTotal();
-	bool const operator!();
+	int calcTotal()override;
+	bool const operator!()override;
 	int lock[4];
 	QwixxRow<vector<int>, Colour::RED> red;
 	QwixxRow<vector<int>, Colour::YELLOW> yellow;
