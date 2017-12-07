@@ -139,7 +139,7 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 					face=d.getFace();
 				}
 				cout<<"You chose "<<colorlist[(int)c]<<" , its face is "<<face<<endl;
-				cout<<"Sum of two sets with white dice is "<<p1<<" and "<<p2<<endl;
+				cout<<"Sum of two sets with white dice is "<<endl<<p1<<" and "<<p2<<endl;
 				pass1=qxss.validate(p1,c);
 				pass2=qxss.validate(p2,c);
 				if(p1&p2)cout<<"You can add either one of two set to your "<<colorlist[(int)c]<<" row."<<endl;
@@ -157,35 +157,38 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 		}
 		if(!(pass1&pass2)){
 			if(p2){
-				qxss.score(p2);
-				cout<<"Set "<<p2<<" has added to your "<<colorlist[(int)c]<<" row."<<endl;
+				qxss.score(p2,c);
+				cout<<p2<<"This set has added to your "<<colorlist[(int)c]<<" row."<<endl;
 			}
 			if(p1){
-				qxss.score(p1);
-				cout<<"Set "<<p1<<" has added to your "<<colorlist[(int)c]<<" row."<<endl;	
+				qxss.score(p1,c);
+				cout<<p1<<"This set has added to your "<<colorlist[(int)c]<<" row."<<endl;	
 			}
 		}
 		else{
 			cout<<"Please choose the one you like to add to your sheet: "<<endl;
-			cout<<"int a represent "<<p1<<", b reprensent "<<p2<<endl;
+			cout<<p1<<"is represented by a "<<endl<<p2<<"is represented by b."<<endl;
 			checkInput(check,qxss,undo,2);
 			cout<<"You chose ";
 			if(check=='a'){
-				qxss.score(p1);
+				qxss.score(p1,c);
 				cout<<p1<<endl;
 			}
 			else{
-				qxss.score(p2);
+				qxss.score(p2,c);
 				cout<<p2<<endl;
 			}
 		}
 		cout<<"===================================="<<endl;
 	}
 	else{
+		check='f';
 		p1=p1.pair(*d1,*d2);
 		cout<<"Your action"<<endl;
 		cout<<"Do you want to skip this round? y/n"<<endl;
 		checkInput(check,qxss,undo,1);
+		undo=true;
+		cout<<"DEBUG: check="<<check<<endl;
 		if(check=='n'){
 			cout<<"Please choose the colour where you want to put the public number"<<endl;
 			cout<<"You can choose ";
@@ -228,7 +231,7 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 						if(check=='y'){
 							Dice *nulldice=new Dice(c);
 							p1.add(*nulldice);
-							qxss.score(p1);
+							qxss.score(p1,c);
 							cout<<"Number added."<<endl;
 							break;
 						}

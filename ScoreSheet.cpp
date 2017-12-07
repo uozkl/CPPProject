@@ -9,6 +9,7 @@
 #include <iostream>
 #include<stdio.h>
 #include "QwintoScoreSheet.h"
+#include "QwixxScoreSheet.h"
 #include<typeinfo>
 using namespace std;
 
@@ -47,9 +48,35 @@ bool ScoreSheet::score(RollOfDice rod, Colour color, int position) {
 				return true;
 				break;
 			}
-		}else{
-
+		} else {
+			QwixxScoreSheet *qxs = dynamic_cast<QwixxScoreSheet*>(this);
+			for(Dice &a:rod){
+						if(a.getColour()!=Colour::WHITE){
+							color=a.getColour();
+						}
+			switch (color) {
+			case Colour::RED:
+				qxs->red += rod;
+				return true;
+				break;
+			case Colour::YELLOW:
+				qxs->yellow += rod;
+				return true;
+				break;
+			case Colour::GREEN:
+				qxs->green += rod;
+				return true;
+				break;
+			case Colour::BLUE:
+				qxs->blue += rod;
+				return true;
+				break;
+			case Colour::WHITE:
+				return true;
+				break;
+			}
 		}
+	}
 	}
 }
 

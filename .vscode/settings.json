@@ -13,6 +13,8 @@
         "random": "cpp",
         "filesystem": "cpp",
         "ostream": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "bitset": "cpp",
+        "set": "cpp"
     }
 }
