@@ -39,7 +39,7 @@ public:
 			default:return false;
 		}
 	}
-	QwixxScoreSheet& operator+=(RollOfDice& rod){
+	void score(RollOfDice& rod){
 		Colour c;
 		for(Dice &a:rod){
 			if(a.getColour()!=Colour::WHITE){
@@ -59,8 +59,9 @@ public:
 			case Colour::BLUE:
 				blue+=rod;
 				break;
+			case Colour::WHITE:
+				break;
 		}
-		return *this;
 	}
 
 	

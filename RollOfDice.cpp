@@ -65,7 +65,7 @@ RollOfDice::operator int() const {
 ostream& operator<<(ostream & os, RollOfDice rod) {
 	int sum = 0;
 	for (Dice a : rod) {
-		os << a << endl;
+		os << a <<" ";
 		sum += a.face;
 	}
 	os << "Sum: " << sum << endl;

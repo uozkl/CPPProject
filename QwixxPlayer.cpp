@@ -150,18 +150,18 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 					undo=true;
 					continue;
 				}
-				cout<<"Undo selection? y/n";
+				cout<<"Undo selection? y/n"<<endl;
 				checkInput(check,qxss,undo,1);
 			}
 			
 		}
 		if(!(pass1&pass2)){
 			if(p2){
-				qxss+=p2;
+				qxss.score(p2);
 				cout<<"Set "<<p2<<" has added to your "<<colorlist[(int)c]<<" row."<<endl;
 			}
 			if(p1){
-				qxss+=p1;
+				qxss.score(p1);
 				cout<<"Set "<<p1<<" has added to your "<<colorlist[(int)c]<<" row."<<endl;	
 			}
 		}
@@ -171,11 +171,11 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 			checkInput(check,qxss,undo,2);
 			cout<<"You chose ";
 			if(check=='a'){
-				qxss+=p1;
+				qxss.score(p1);
 				cout<<p1<<endl;
 			}
 			else{
-				qxss+=p2;
+				qxss.score(p2);
 				cout<<p2<<endl;
 			}
 		}
@@ -212,7 +212,7 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 						break;
 					case 'm':
 						cout<<"You chose to skip this round"<<endl;
-						cout<<"You sure? y/n";
+						cout<<"You sure? y/n"<<endl;
 						checkInput(check,qxss,undo,1);
 						if(check=='y')break;
 						else{
@@ -220,28 +220,29 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 							break;
 						}
 						}
-					if(!undo){
-						if(qxss.validate(p1,c)){
-							cout<<"Public number "<<p1<<" will add to your "<<colorlist[(int)c]<<" row"<<endl;
-							cout<<"You Sure? y/n";
-							checkInput(check,qxss,undo,1);
-							if(check=='y'){
-								Dice *nulldice=new Dice(c);
-								p1.add(*nulldice);
-								qxss+=p1;
-								cout<<"Number added."<<endl;
-								break;
-							}
+				if(!undo){
+					if(qxss.validate(p1,c)){
+						cout<<"Public number "<<p1<<" will add to your "<<colorlist[(int)c]<<" row"<<endl;
+						cout<<"You Sure? y/n"<<endl;
+						checkInput(check,qxss,undo,1);
+						if(check=='y'){
+							Dice *nulldice=new Dice(c);
+							p1.add(*nulldice);
+							qxss.score(p1);
+							cout<<"Number added."<<endl;
+							break;
 						}
-						else{
-							cout<<"Oops, you can't place the number there"<<endl;
-							undo=true;
-							continue;
-						}
+					}
+					else{
+						cout<<"Oops, you can't place the number there"<<endl;
+						undo=true;
+						continue;
+					}
 				
+				}
 			}
+			cout<<"===================================="<<endl;
 		}
-		cout<<"===================================="<<endl;
 	}
-}
 
+}
