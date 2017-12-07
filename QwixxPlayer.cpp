@@ -32,7 +32,7 @@ void QwixxPlayer::inputBeforeRoll(RollOfDice &rod) {
 	if(qxss.lock[3]){Dice *b = new Dice(blue);rod.add(*b);}
 }
 
-void checkInput(char& _in,QwixxScoreSheet &qxss,bool &undo,bool checkUndo=false){
+void checkInput(char& _in,QwixxScoreSheet &qxss,bool &undo,int checktype=0){
 	cout<<"Please input a value: "<<endl;
 	string in;
 	bool valid=false;
@@ -40,26 +40,60 @@ void checkInput(char& _in,QwixxScoreSheet &qxss,bool &undo,bool checkUndo=false)
 		cin>>in;
 		if(in.length()==1){
 			_in=in[0];
-			switch(_in){
-				case 'r':if(qxss.lock[0])valid=true;
-				case 'y':if(qxss.lock[1])valid=true;
-				case 'g':if(qxss.lock[2])valid=true;
-				case 'b':if(qxss.lock[3])valid=true;
-				case 'm':valid=true;
-				default:break;
+			if(checktype==0){
+				switch(_in){
+					case 'r':if(qxss.lock[0])valid=true;
+					case 'y':if(qxss.lock[1])valid=true;
+					case 'g':if(qxss.lock[2])valid=true;
+					case 'b':if(qxss.lock[3])valid=true;
+					case 'm':valid=true;
+					default:break;
+				}
 			}
-			if(checkUndo){
+			if(checktype==1){
 				if(_in=='y'){undo=true;valid=true;}
 				if(_in=='n'){undo=false;valid=true;}
 			}
+			if(checktype==2){
+				if(_in=='a'){valid=true;}
+				if(_in=='b'){valid=true;}
+			}
+
 		}
 		if(valid)break;
 		cout<<"Invalid input"<<endl;
 	}
 }
 
+void checkLock(QwixxScoreSheet &qxss){
+	//TODO:add it
+}
+
+void checkWin(QwixxScoreSheet &qxss){
+	//TODO:add it
+
+}
+
+
+
+
 void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
+	//variables for all players
 	string colorlist[]={ "Red","Blue","Yellow","Green","White"};
+	Dice *d1=nullptr;
+	Dice *d2=nullptr;
+	char check;
+	int face;
+	for(Dice &e:rod){
+		if(e.getColour()==Colour::WHITE){
+			if(d1==nullptr)d1=&e;
+			else d2=&e;
+		}
+	}
+	RollOfDice p1,p2;
+	bool undo=true;
+	bool pass1,pass2;
+	Colour c;
 	if(active){
 		cout<<"Please select the dice which represented by colour to fill your sheet: "<<endl;
 		cout<<"If you don't want to choose any of the dice, you can use one of your Mis-Throw chance to skip this round"<<endl;
@@ -70,29 +104,11 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 		if(qxss.lock[3])cout<<"b for blue; ";
 		cout<<"and m for skip. "<<endl;
 		cout<<"Currently you have "<<4-qxss.failed<<" chances to skip, note ";
-		if(qxss.failed==3)cout<<"if you skip this time, gameover.";
-		else cout<<"if you used all your chances, gameover";
-		char check;
-		//get two white face
-		int face,w1,w2;
-		Dice *d1=nullptr;
-		Dice *d2=nullptr;
-		for(Dice &e:rod){
-			if(e.getColour()==Colour::WHITE){
-				if(d1==nullptr)d1=&e;
-				else d2=&e;
-			}
-		}
-		RollOfDice p1,p2;
-		char finalCommand;
-		int finalSet;
-		bool undo=true;
-		bool pass1,pass2;
-		Colour c;
+		if(qxss.failed==3)cout<<"if you skip this time, gameover."<<endl;
+		else cout<<"if you used all your chances, gameover"<<endl;
 		while(undo){
 			undo=false;
 			checkInput(check,qxss,undo);
-			finalCommand=check;
 			switch(check){
 				case 'r':c=Colour::RED;
 				case 'y':c=Colour::YELLOW;
@@ -100,13 +116,18 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 				case 'b':c=Colour::BLUE;
 				case 'm':
 					cout<<"You chose to skip this round"<<endl;
-					cout<<"Undo changes? y/n";
-					checkInput(check,qxss,undo);
-					break;
+					cout<<"You sure? You will use one of your chances to skip. y/n"<<endl;
+					checkInput(check,qxss,undo,1);
+					if(check=='y')break;
+					else{
+						undo=true;
+						continue;
+					}
 				default: 
 					for(Dice d:rod)if(d.getColour()==c){
 						p1=p1.pair(*d1,d);
 						p2=p2.pair(*d2,d);
+						face=d.getFace();
 					}
 					cout<<"You chose "<<colorlist[(int)c]<<" , its face is "<<face<<endl;
 					cout<<"Sum of two sets with white dice is "<<p1<<" and "<<p2<<endl;
@@ -121,16 +142,89 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 						continue;
 					}
 					cout<<"Undo selection? y/n";
-					checkInput(check,qxss,undo,true);
+					checkInput(check,qxss,undo,1);
 			}
 		}
 		if(!(pass1&pass2)){
-			cout<<"Set "<<p2<<" has added to your "<<colorlist[(int)c]<<" row."<<endl;
+			if(p2){
+				qxss+=p2;
+				cout<<"Set "<<p2<<" has added to your "<<colorlist[(int)c]<<" row."<<endl;
+			}
+			if(p1){
+				qxss+=p1;
+				cout<<"Set "<<p1<<" has added to your "<<colorlist[(int)c]<<" row."<<endl;	
+			}
 		}
+		else{
+			cout<<"Please choose the one you like to add to your sheet: "<<endl;
+			cout<<"int a represent "<<p1<<", b reprensent "<<p2<<endl;
+			checkInput(check,qxss,undo,2);
+			cout<<"You chose ";
+			if(check=='a'){
+				qxss+=p1;
+				cout<<p1<<endl;
+			}
+			else{
+				qxss+=p2;
+				cout<<p2<<endl;
+			}
+		}
+		cout<<"===================================="<<endl;
 	}
 	else{
-		//TODO
+		p1=p1.pair(*d1,*d2);
+		cout<<"Your action"<<endl;
+		cout<<"Do you want to skip this round? y/n"<<endl;
+		checkInput(check,qxss,undo,1);
+		if(check=='n'){
+			cout<<"Please choose the colour where you want to put the public number"<<endl;
+			cout<<"You can choose ";
+			if(qxss.lock[0])cout<<"r for Red; ";
+			if(qxss.lock[1])cout<<"y for yellow; ";
+			if(qxss.lock[2])cout<<"g for green; ";
+			if(qxss.lock[3])cout<<"b for blue; ";
+			cout<<"and m to skip. "<<endl;
+			while(undo){
+				undo=false;
+				checkInput(check,qxss,undo);
+				switch(check){
+					case 'r':c=Colour::RED;
+					case 'y':c=Colour::YELLOW;
+					case 'g':c=Colour::GREEN;
+					case 'b':c=Colour::BLUE;
+					case 'm':
+						cout<<"You chose to skip this round"<<endl;
+						cout<<"You sure? y/n";
+						checkInput(check,qxss,undo,1);
+						if(check=='y')break;
+						else{
+							undo=true;
+							continue;
+						}
+					default: 
+						if(qxss.validate(p1,c)){
+							cout<<"Public number "<<p1<<" will add to your "<<colorlist[(int)c]<<" row"<<endl;
+							cout<<"You Sure? y/n";
+							checkInput(check,qxss,undo,1);
+							if(check=='y'){
+								Dice *nulldice=new Dice(c);
+								p1.add(*nulldice);
+								qxss+=p1;
+								cout<<"Number added."<<endl;
+								break;
+							}
+						}
+						else{
+							cout<<"Oops, you can't place the number there"<<endl;
+							undo=true;
+							continue;
+						}
+				}
+			}
+		}
+		cout<<"===================================="<<endl;
 	}
-	
+	checkWin(qxss);
+	checkLock(qxss);
 }
 

@@ -22,15 +22,6 @@ public:
 	QwixxScoreSheet() = default;
 	QwixxScoreSheet(string pname);
 	~QwixxScoreSheet()=default;
-bool QwixxScoreSheet::validate(RollOfDice rod, Colour color, int position=-1)override {
-		switch(color){
-			case Colour::RED:return red.validate(rod);
-			case Colour::YELLOW:return yellow.validate(rod);
-			case Colour::GREEN:return green.validate(rod);
-			case Colour::BLUE:return blue.validate(rod);
-			default:return false;
-		}
-	}
 	int calcTotal()override;
 	bool const operator!()override;
 	int lock[4];
@@ -38,7 +29,36 @@ bool QwixxScoreSheet::validate(RollOfDice rod, Colour color, int position=-1)ove
 	QwixxRow<vector<int>, Colour::YELLOW> yellow;
 	QwixxRow<list<int>, Colour::GREEN> green;
 	QwixxRow<list<int>, Colour::BLUE> blue;
-};
+	int np=-1;
+	bool QwixxScoreSheet::validate(RollOfDice rod, Colour color, int position=-1)override {
+		switch(color){
+			case Colour::RED:return red.validate(rod,np);
+			case Colour::YELLOW:return yellow.validate(rod,np);
+			case Colour::GREEN:return green.validate(rod,np);
+			case Colour::BLUE:return blue.validate(rod,np);
+			default:return false;
+		}
+	}
+	QwixxScoreSheet& operator+=(RollOfDice& rod){
+		Colour c;
+		for(Dice &a:rod){
+			if(a.getColour()!=Colour::WHITE){
+				c=a.getColour();
+			}
+		}
+		switch(c){
+			case Colour::RED:red+=rod;
+			case Colour::YELLOW:yellow+=rod;
+			case Colour::GREEN:green+=rod;
+			case Colour::BLUE:blue+=rod;
+		}
+		return *this;
+	}
+
+	
+	
+	
+	};
 
 #endif /* QWIXXSCORESHEET_H */
 

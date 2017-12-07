@@ -12,6 +12,7 @@
         "streambuf": "cpp",
         "random": "cpp",
         "filesystem": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "list": "cpp"
     }
 }

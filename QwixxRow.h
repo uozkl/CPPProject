@@ -18,13 +18,13 @@ class QwixxRow {
 public:
 	QwixxRow();
 	QwixxRow<T, C> operator+=(RollOfDice rod);
-	bool validate(RollOfDice rod);
+	bool validate(RollOfDice rod,int &position);
 	T scoreArray;
 
 };
 template<class T, Colour C>
-bool QwixxRow<T,C>:: validate(RollOfDice rod){
-	int position,counter;
+bool QwixxRow<T,C>:: validate(RollOfDice rod,int &position){
+	int counter;
 	if (C == Colour::RED || C == Colour::YELLOW) position = rd - 2;
 	else position = 12 - rd;
 	for (auto a : scoreArray) {
@@ -32,6 +32,20 @@ bool QwixxRow<T,C>:: validate(RollOfDice rod){
 		else if (a > 0) return false;
 	}
 	return true;
+};
+template<class T, Colour C>
+QwixxRow<T, C> QwixxRow<T, C>::operator +=(RollOfDice rd) {
+	int position,counter;
+	if(!validate(rd,position)){
+		throw "That entry is invalid";
+		}
+	for (auto &a:scoreArray){
+		if(position==counter){
+		a=rd;
+		break;
+	}++counter;
+	}
+	return *this;
 };
 
 #endif /* QWIXXROW_H */
