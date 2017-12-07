@@ -22,7 +22,7 @@ public:
 	QwixxScoreSheet() = default;
 	QwixxScoreSheet(string pname);
 	~QwixxScoreSheet()=default;
-	bool QwixxScoreSheet::validate(RollOfDice rod, Colour color, int position=-1)override{
+bool QwixxScoreSheet::validate(RollOfDice rod, Colour color, int position=-1)override {
 		switch(color){
 			case Colour::RED:return red.validate(rod);
 			case Colour::YELLOW:return yellow.validate(rod);

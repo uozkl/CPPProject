@@ -31,19 +31,6 @@ ostream& operator<<(ostream& os, const QwixxScoreSheet &qxsheet) {
 	os << "Failed throws:" << qxsheet.failed << endl;
 	return os;
 }
-bool QwixxScoreSheet::validate(RollOfDice rod, Colour color, int position) {
-	switch (color) {
-	case Colour::RED:
-		return red.validate(rod, position);
-		break;
-	case Colour::YELLOW:
-		return yellow.validate(rod, position);
-		break;
-	case Colour::BLUE:
-		return blue.validate(rod, position);
-		break;
-	}
-}
 int QwixxScoreSheet::calcTotal() {	
 	int total = 0;
 	int counter = 0;
