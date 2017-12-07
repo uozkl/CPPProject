@@ -42,12 +42,23 @@ void checkInput(char& _in,QwixxScoreSheet &qxss,bool &undo,int checktype=0){
 			_in=in[0];
 			if(checktype==0){
 				switch(_in){
-					case 'r':if(!qxss.lock[0])valid=true;
-					case 'y':if(!qxss.lock[1])valid=true;
-					case 'g':if(!qxss.lock[2])valid=true;
-					case 'b':if(!qxss.lock[3])valid=true;
-					case 'm':valid=true;
-					default:break;
+					case 'r':
+						if(!qxss.lock[0])valid=true;
+						break;
+					case 'y':
+						if(!qxss.lock[1])valid=true;
+						break;
+					case 'g':
+						if(!qxss.lock[2])valid=true;
+						break;
+					case 'b':
+						if(!qxss.lock[3])valid=true;
+						break;
+					case 'm':
+						valid=true;
+						break;
+					default:
+						break;
 				}
 			}
 			if(checktype==1){
@@ -97,18 +108,14 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 		while(undo){
 			undo=false;
 			checkInput(check,qxss,undo);
-			cout<<"DEBUG: check="<<check<<endl;
 			switch(check){
 				case 'r':
-					cout<<"RRRRRRRRRRRRRRRRRRRR"<<endl;
 					c=Colour::RED;
 					break;
 				case 'y':
-					cout<<"YYYYYYYYYYYYYYYYYYYY"<<endl;
 					c=Colour::YELLOW;
 					break;
 				case 'g':
-					cout<<"GGGGGGGGGGGGGGGGGGGG"<<endl;
 					c=Colour::GREEN;
 					break;
 				case 'b':
@@ -191,10 +198,18 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 				undo=false;
 				checkInput(check,qxss,undo);
 				switch(check){
-					case 'r':c=Colour::RED;
-					case 'y':c=Colour::YELLOW;
-					case 'g':c=Colour::GREEN;
-					case 'b':c=Colour::BLUE;
+					case 'r':
+						c=Colour::RED;
+						break;
+					case 'y':
+						c=Colour::YELLOW;
+						break;
+					case 'g':
+						c=Colour::GREEN;
+						break;
+					case 'b':
+						c=Colour::BLUE;
+						break;
 					case 'm':
 						cout<<"You chose to skip this round"<<endl;
 						cout<<"You sure? y/n";
@@ -202,9 +217,10 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 						if(check=='y')break;
 						else{
 							undo=true;
-							continue;
+							break;
 						}
-					default: 
+						}
+					if(!undo){
 						if(qxss.validate(p1,c)){
 							cout<<"Public number "<<p1<<" will add to your "<<colorlist[(int)c]<<" row"<<endl;
 							cout<<"You Sure? y/n";
@@ -222,7 +238,7 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 							undo=true;
 							continue;
 						}
-				}
+				
 			}
 		}
 		cout<<"===================================="<<endl;
