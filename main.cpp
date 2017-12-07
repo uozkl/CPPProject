@@ -14,6 +14,70 @@
 
 using namespace std;
 
+int checkLock(QwixxScoreSheet &qxss){
+	string colorlist[]={ "Red","Yellow","Green","Blue"};
+	int total;
+	int index=-1;
+	bool canLock=false;
+	if(qxss.lock[0]){
+		for(auto a:qxss.red.scoreArray){
+			if(a>0)total++;
+			if(total==5){
+				canLock=true;
+				index=0;
+			}
+		}
+	}
+	total=0;
+	if(qxss.lock[1]){
+		for(auto a:qxss.yellow.scoreArray){
+			if(a>0)total++;
+			if(total==5){
+				canLock=true;
+				index=1;
+			}
+		}
+	}
+	total=0;
+	if(qxss.lock[2]){
+		for(auto a:qxss.green.scoreArray){
+			if(a>0)total++;
+			if(total==5){
+				canLock=true;
+				index=2;
+			}
+		}
+	}
+	total=0;
+	if(qxss.lock[3]){
+		for(auto a:qxss.blue.scoreArray){
+			if(a>0)total++;
+			if(total==5){
+				canLock=true;
+				index=3;
+			}
+		}
+	}
+	if(canLock){
+		cout<<"You can lock your "<<colorlist[index]<<" row."<<endl;
+		cout<<"Do you want to lock it? y/n"<<endl;
+		char check;
+		bool passed=false;
+		while(!passed){
+			cin>>check;
+			if(check=='y'){
+				qxss.lock[index]=true;
+				cout<<"Locked."<<endl;
+				passed=true;
+			}
+			if(check=='n'){
+				passed=true;
+			}
+		}
+	}
+	return index;
+}
+
 int main() {
 	bool done = false;
 	while (!done) {
@@ -100,6 +164,7 @@ int main() {
 				QwixxPlayer *player = new QwixxPlayer(*qxss);
 				playerVec.push_back(*player);
 			}
+			int islock=-1;
 			bool gg = false;
 			while (gg == false) {
 				for (auto &a : playerVec) {	//loop over all the players, ask the active player to roll the dice
@@ -111,6 +176,13 @@ int main() {
 					cout << a.qxss << endl;
 					a.inputAfterRoll(rd);
 					cout << a.qxss << endl;
+					islock=checkLock(a.qxss);
+					if(islock!=-1){
+						for(auto &k:playerVec){
+							k.qxss.lock[islock]=true;
+						}
+						a.qxss.lock[islock]=2;
+					}
 					if (!a.qxss) {
 						gg = true;
 						break;
@@ -120,6 +192,13 @@ int main() {
 							cout << b.qxss;
 							b.inputAfterRoll(rd);
 							cout << b.qxss << endl;
+							islock=checkLock(a.qxss);
+							if(islock!=-1){
+								for(auto &k:playerVec){
+									k.qxss.lock[islock]=true;
+								}
+								b.qxss.lock[islock]=2;
+							}
 							if (!b.qxss) {
 								gg = true;
 								break;

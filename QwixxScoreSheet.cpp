@@ -82,6 +82,9 @@ bool const QwixxScoreSheet::operator!() {
 		}
 	int counter=0;
 	for(auto a: lock){
+		if(a==2){
+			counter++;
+		}
 		if(counter==2){
 			return true;
 		}
