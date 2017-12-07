@@ -47,10 +47,18 @@ public:
 			}
 		}
 		switch(c){
-			case Colour::RED:red+=rod;
-			case Colour::YELLOW:yellow+=rod;
-			case Colour::GREEN:green+=rod;
-			case Colour::BLUE:blue+=rod;
+			case Colour::RED:
+				red+=rod;
+				break;
+			case Colour::YELLOW:
+				yellow+=rod;
+				break;
+			case Colour::GREEN:
+				green+=rod;
+				break;
+			case Colour::BLUE:
+				blue+=rod;
+				break;
 		}
 		return *this;
 	}
