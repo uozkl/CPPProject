@@ -20,7 +20,7 @@ public:
 	QwixxRow<T, C> operator+=(RollOfDice rod);
 	bool validate(RollOfDice rd, int pos);
 	T scoreArray;
-	//test2
+	//test234
 
 };
 template<class T, Colour C>
