@@ -19,7 +19,7 @@ int checkLock(QwixxScoreSheet &qxss){
 	int total;
 	int index=-1;
 	bool canLock=false;
-	if(qxss.lock[0]){
+	if(!qxss.lock[0]){
 		for(auto a:qxss.red.scoreArray){
 			if(a>0)total++;
 			if(total==5){
@@ -29,7 +29,7 @@ int checkLock(QwixxScoreSheet &qxss){
 		}
 	}
 	total=0;
-	if(qxss.lock[1]){
+	if(!qxss.lock[1]){
 		for(auto a:qxss.yellow.scoreArray){
 			if(a>0)total++;
 			if(total==5){
@@ -39,7 +39,7 @@ int checkLock(QwixxScoreSheet &qxss){
 		}
 	}
 	total=0;
-	if(qxss.lock[2]){
+	if(!qxss.lock[2]){
 		for(auto a:qxss.green.scoreArray){
 			if(a>0)total++;
 			if(total==5){
@@ -49,7 +49,7 @@ int checkLock(QwixxScoreSheet &qxss){
 		}
 	}
 	total=0;
-	if(qxss.lock[3]){
+	if(!qxss.lock[3]){
 		for(auto a:qxss.blue.scoreArray){
 			if(a>0)total++;
 			if(total==5){

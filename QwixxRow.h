@@ -25,8 +25,8 @@ public:
 template<class T, Colour C>
 bool QwixxRow<T,C>:: validate(RollOfDice rod,int &position){
 	int counter;
-	if (C == Colour::RED || C == Colour::YELLOW) position = rd - 2;
-	else position = 12 - rd;
+	if (C == Colour::RED || C == Colour::YELLOW) position = rod - 2;
+	else position = 12 - rod;
 	for (auto a : scoreArray) {
 		if (position > counter)++counter;
 		else if (a > 0) return false;

@@ -24,13 +24,13 @@ public:
 	~QwixxScoreSheet()=default;
 	int calcTotal()override;
 	bool const operator!()override;
-	int lock[4];
+	int lock[4]={0,0,0,0};
 	QwixxRow<vector<int>, Colour::RED> red;
 	QwixxRow<vector<int>, Colour::YELLOW> yellow;
 	QwixxRow<list<int>, Colour::GREEN> green;
 	QwixxRow<list<int>, Colour::BLUE> blue;
 	int np=-1;
-	bool QwixxScoreSheet::validate(RollOfDice rod, Colour color, int position=-1)override {
+	bool validate(RollOfDice rod, Colour color, int position=-1)override {
 		switch(color){
 			case Colour::RED:return red.validate(rod,np);
 			case Colour::YELLOW:return yellow.validate(rod,np);

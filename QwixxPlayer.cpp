@@ -26,10 +26,10 @@ void QwixxPlayer::inputBeforeRoll(RollOfDice &rod) {
 	Dice *w2=new Dice(white);
 	rod.add(*w1);
 	rod.add(*w2);
-	if(qxss.lock[0]){Dice *r = new Dice(red);rod.add(*r);}
-	if(qxss.lock[1]){Dice *y = new Dice(yellow);rod.add(*y);}
-	if(qxss.lock[2]){Dice *g= new Dice(green);rod.add(*g);}
-	if(qxss.lock[3]){Dice *b = new Dice(blue);rod.add(*b);}
+	if(!qxss.lock[0]){Dice *r = new Dice(red);rod.add(*r);}
+	if(!qxss.lock[1]){Dice *y = new Dice(yellow);rod.add(*y);}
+	if(!qxss.lock[2]){Dice *g= new Dice(green);rod.add(*g);}
+	if(!qxss.lock[3]){Dice *b = new Dice(blue);rod.add(*b);}
 }
 
 void checkInput(char& _in,QwixxScoreSheet &qxss,bool &undo,int checktype=0){
@@ -42,10 +42,10 @@ void checkInput(char& _in,QwixxScoreSheet &qxss,bool &undo,int checktype=0){
 			_in=in[0];
 			if(checktype==0){
 				switch(_in){
-					case 'r':if(qxss.lock[0])valid=true;
-					case 'y':if(qxss.lock[1])valid=true;
-					case 'g':if(qxss.lock[2])valid=true;
-					case 'b':if(qxss.lock[3])valid=true;
+					case 'r':if(!qxss.lock[0])valid=true;
+					case 'y':if(!qxss.lock[1])valid=true;
+					case 'g':if(!qxss.lock[2])valid=true;
+					case 'b':if(!qxss.lock[3])valid=true;
 					case 'm':valid=true;
 					default:break;
 				}
@@ -80,16 +80,16 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 	}
 	RollOfDice p1,p2;
 	bool undo=true;
-	bool pass1,pass2;
+	bool pass1=false,pass2=false;
 	Colour c;
 	if(active){
 		cout<<"Please select the dice which represented by colour to fill your sheet: "<<endl;
 		cout<<"If you don't want to choose any of the dice, you can use one of your Mis-Throw chance to skip this round"<<endl;
 		cout<<"You can choose ";
-		if(qxss.lock[0])cout<<"r for Red; ";
-		if(qxss.lock[1])cout<<"y for yellow; ";
-		if(qxss.lock[2])cout<<"g for green; ";
-		if(qxss.lock[3])cout<<"b for blue; ";
+		if(!qxss.lock[0])cout<<"r for Red; ";
+		if(!qxss.lock[1])cout<<"y for yellow; ";
+		if(!qxss.lock[2])cout<<"g for green; ";
+		if(!qxss.lock[3])cout<<"b for blue; ";
 		cout<<"and m for skip. "<<endl;
 		cout<<"Currently you have "<<4-qxss.failed<<" chances to skip, note ";
 		if(qxss.failed==3)cout<<"if you skip this time, gameover."<<endl;
@@ -97,41 +97,56 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 		while(undo){
 			undo=false;
 			checkInput(check,qxss,undo);
+			cout<<"DEBUG: check="<<check<<endl;
 			switch(check){
-				case 'r':c=Colour::RED;
-				case 'y':c=Colour::YELLOW;
-				case 'g':c=Colour::GREEN;
-				case 'b':c=Colour::BLUE;
+				case 'r':
+					cout<<"RRRRRRRRRRRRRRRRRRRR"<<endl;
+					c=Colour::RED;
+					break;
+				case 'y':
+					cout<<"YYYYYYYYYYYYYYYYYYYY"<<endl;
+					c=Colour::YELLOW;
+					break;
+				case 'g':
+					cout<<"GGGGGGGGGGGGGGGGGGGG"<<endl;
+					c=Colour::GREEN;
+					break;
+				case 'b':
+					c=Colour::BLUE;
+					break;
 				case 'm':
 					cout<<"You chose to skip this round"<<endl;
 					cout<<"You sure? You will use one of your chances to skip. y/n"<<endl;
 					checkInput(check,qxss,undo,1);
-					if(check=='y')break;
+					if(check=='n')undo=true;
 					else{
-						undo=true;
-						continue;
+						qxss.failed++;
 					}
-				default: 
-					for(Dice d:rod)if(d.getColour()==c){
-						p1=p1.pair(*d1,d);
-						p2=p2.pair(*d2,d);
-						face=d.getFace();
-					}
-					cout<<"You chose "<<colorlist[(int)c]<<" , its face is "<<face<<endl;
-					cout<<"Sum of two sets with white dice is "<<p1<<" and "<<p2<<endl;
-					pass1=qxss.validate(p1,c);
-					pass2=qxss.validate(p2,c);
-					if(p1&p2)cout<<"You can add either one of two set to your "<<colorlist[(int)c]<<" row."<<endl;
-					else if(p1)cout<<"You can add only one set "<<p1<<" to your "<<colorlist[(int)c]<<" row."<<endl;
-					else if(p2)cout<<"You can add only one set "<<p2<<" to your "<<colorlist[(int)c]<<" row."<<endl;
-					else {
-						cout<<"But you can't add any one of the set to your "<<colorlist[(int)c]<<" row."<<endl<<"Please reselect a colcour"<<endl;
-						undo=true;
-						continue;
-					}
-					cout<<"Undo selection? y/n";
-					checkInput(check,qxss,undo,1);
+					break;
 			}
+
+			if(!undo){ 
+				for(Dice d:rod)if(d.getColour()==c){
+					p1=p1.pair(*d1,d);
+					p2=p2.pair(*d2,d);
+					face=d.getFace();
+				}
+				cout<<"You chose "<<colorlist[(int)c]<<" , its face is "<<face<<endl;
+				cout<<"Sum of two sets with white dice is "<<p1<<" and "<<p2<<endl;
+				pass1=qxss.validate(p1,c);
+				pass2=qxss.validate(p2,c);
+				if(p1&p2)cout<<"You can add either one of two set to your "<<colorlist[(int)c]<<" row."<<endl;
+				else if(p1)cout<<"You can add only one set "<<p1<<" to your "<<colorlist[(int)c]<<" row."<<endl;
+				else if(p2)cout<<"You can add only one set "<<p2<<" to your "<<colorlist[(int)c]<<" row."<<endl;
+				else {
+					cout<<"But you can't add any one of the set to your "<<colorlist[(int)c]<<" row."<<endl<<"Please reselect a colcour"<<endl;
+					undo=true;
+					continue;
+				}
+				cout<<"Undo selection? y/n";
+				checkInput(check,qxss,undo,1);
+			}
+			
 		}
 		if(!(pass1&pass2)){
 			if(p2){
@@ -167,10 +182,10 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 		if(check=='n'){
 			cout<<"Please choose the colour where you want to put the public number"<<endl;
 			cout<<"You can choose ";
-			if(qxss.lock[0])cout<<"r for Red; ";
-			if(qxss.lock[1])cout<<"y for yellow; ";
-			if(qxss.lock[2])cout<<"g for green; ";
-			if(qxss.lock[3])cout<<"b for blue; ";
+			if(!qxss.lock[0])cout<<"r for Red; ";
+			if(!qxss.lock[1])cout<<"y for yellow; ";
+			if(!qxss.lock[2])cout<<"g for green; ";
+			if(!qxss.lock[3])cout<<"b for blue; ";
 			cout<<"and m to skip. "<<endl;
 			while(undo){
 				undo=false;
