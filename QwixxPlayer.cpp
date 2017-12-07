@@ -66,15 +66,59 @@ void checkInput(char& _in,QwixxScoreSheet &qxss,bool &undo,int checktype=0){
 }
 
 void checkLock(QwixxScoreSheet &qxss){
-	//TODO:add it
+	string colorlist[]={ "Red","Yellow","Green","Blue"};
+	int total,index;
+	bool canLock=false;
+	if(qxss.lock[0]){
+		for(auto a:qxss.red.scoreArray){
+			if(a>0)total++;
+			if(total==5){
+				canLock=true;
+				index=0;
+			}
+		}
+	}
+	total=0;
+	if(qxss.lock[1]){
+		for(auto a:qxss.yellow.scoreArray){
+			if(a>0)total++;
+			if(total==5){
+				canLock=true;
+				index=1;
+			}
+		}
+	}
+	total=0;
+	if(qxss.lock[2]){
+		for(auto a:qxss.green.scoreArray){
+			if(a>0)total++;
+			if(total==5){
+				canLock=true;
+				index=2;
+			}
+		}
+	}
+	total=0;
+	if(qxss.lock[3]){
+		for(auto a:qxss.blue.scoreArray){
+			if(a>0)total++;
+			if(total==5){
+				canLock=true;
+				index=3;
+			}
+		}
+	}
+	if(canLock){
+		cout<<"You can lock your "<<colorlist[index]<<" row."<<endl;
+		cout<<"Do you want to lock it? y/n"<<endl;
+		char check;
+		checkInput(check,qxss,canLock,1);
+					if(check=='y'){
+						qxss.lock[index]=true;
+						cout<<"Locked."<<endl;
+					}
+	}
 }
-
-void checkWin(QwixxScoreSheet &qxss){
-	//TODO:add it
-
-}
-
-
 
 
 void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
@@ -224,7 +268,6 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 		}
 		cout<<"===================================="<<endl;
 	}
-	checkWin(qxss);
 	checkLock(qxss);
 }
 
