@@ -68,7 +68,7 @@ ostream& operator<<(ostream & os, RollOfDice rod) {
 		os << a << endl;
 		sum += a.face;
 	}
-	cout << "Sum: " << sum << endl;
+	os << "Sum: " << sum << endl;
 	return os;
 }
 

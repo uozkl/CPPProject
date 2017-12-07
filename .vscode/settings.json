@@ -1,0 +1,17 @@
+{
+    "files.associations": {
+        "iostream": "cpp",
+        "memory": "cpp",
+        "mutex": "cpp",
+        "shared_mutex": "cpp",
+        "future": "cpp",
+        "iosfwd": "cpp",
+        "regex": "cpp",
+        "xlocale": "cpp",
+        "xstring": "cpp",
+        "streambuf": "cpp",
+        "random": "cpp",
+        "filesystem": "cpp",
+        "ostream": "cpp"
+    }
+}

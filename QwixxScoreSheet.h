@@ -22,7 +22,15 @@ public:
 	QwixxScoreSheet() = default;
 	QwixxScoreSheet(string pname);
 	~QwixxScoreSheet()=default;
-	bool validate(RollOfDice rod, Colour color, int position = -1);
+	bool validate(Colour color, int position = -1){
+		switch(color){
+			case Colour::RED:return red.validate(true,position);
+			case Colour::YELLOW:return yellow.validate(true,position);
+			case Colour::GREEN:return green.validate(false,position);
+			case Colour::BLUE:return blue.validate(false,position);
+			default:return false;
+		}
+	}
 	int calcTotal();
 	bool const operator!();
 	int lock[4];
