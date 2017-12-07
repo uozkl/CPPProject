@@ -25,6 +25,7 @@ public:
 	bool validate(RollOfDice rod, Colour color, int position = -1);
 	int calcTotal();
 	bool const operator!();
+	int lock[4];
 	QwixxRow<vector<int>, Colour::RED> red;
 	QwixxRow<vector<int>, Colour::YELLOW> yellow;
 	QwixxRow<list<int>, Colour::GREEN> green;
