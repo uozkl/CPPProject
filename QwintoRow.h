@@ -27,7 +27,8 @@ public:
 	int scoreArray[10] = { };
 };
 template<Colour C>
-bool QwintoRow<C>::validate(RollOfDice rd, int pos) {
+bool QwintoRow<C>::validate(RollOfDice rd, int pos) {	// validate the row
+	// check if roll of dice contains the same colored dice as the row
 	bool cCheck = false;
 	for (auto a : rd) {
 		if (a.colour == C) {
@@ -44,18 +45,20 @@ bool QwintoRow<C>::validate(RollOfDice rd, int pos) {
 		cout << "Index out of range." << endl;
 		return false;
 	}
-
+// check if the position is empty
 	if (scoreArray[pos-1] != 0) {
 		cout << "This position is already occupied." << endl;
 		return false;
 	}
 	int i;
+	// check the number on the left is smaller
 	for (i = pos-1; i > -1; --i) {
 		if (scoreArray[i] >= rd && scoreArray[i] > 0) {
 			cout << "the number on the left must be smaller than this" << endl;
 			return false;
 		}
 	}
+	// check the number on the right is greater 
 	for (i = pos-1; i < 10; ++i) {
 
 		if (scoreArray[i] <= rd && scoreArray[i] > 0) {
