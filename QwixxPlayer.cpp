@@ -125,7 +125,10 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 					cout<<"You chose to skip this round"<<endl;
 					cout<<"You sure? You will use one of your chances to skip. y/n"<<endl;
 					checkInput(check,qxss,undo,1);
-					if(check=='n')undo=true;
+					if(check=='n'){
+						cout<<"You undid your selection"<<endl;
+						undo=true;
+						}
 					else{
 						qxss.failed++;
 					}
@@ -142,9 +145,9 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 				cout<<"Sum of two sets with white dice is "<<endl<<p1<<p2<<endl;
 				pass1=qxss.validate(p1,c);
 				pass2=qxss.validate(p2,c);
-				if(p1&p2)cout<<"You can add either one of two set to your "<<colorlist[(int)c]<<" row."<<endl;
-				else if(p1)cout<<"You can add only one set "<<p1<<" to your "<<colorlist[(int)c]<<" row."<<endl;
-				else if(p2)cout<<"You can add only one set "<<p2<<" to your "<<colorlist[(int)c]<<" row."<<endl;
+				if(pass1&pass2)cout<<"You can add either one of two set to your "<<colorlist[(int)c]<<" row."<<endl;
+				else if(pass1)cout<<"You can add only one set to your "<<colorlist[(int)c]<<" row."<<p1<<endl;
+				else if(pass2)cout<<"You can add only one set "<<p2<<" to your "<<colorlist[(int)c]<<" row."<<endl;
 				else {
 					cout<<"But you can't add any one of the set to your "<<colorlist[(int)c]<<" row."<<endl<<"Please reselect a colcour"<<endl;
 					undo=true;
@@ -152,15 +155,16 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 				}
 				cout<<"Undo selection? y/n"<<endl;
 				checkInput(check,qxss,undo,1);
+				if(!undo)cout<<"You undid your selection"<<endl;
 			}
 			
 		}
 		if(!(pass1&pass2)){
-			if(p2){
+			if(pass2){
 				qxss.score(p2,c);
 				cout<<p2<<"This set has added to your "<<colorlist[(int)c]<<" row."<<endl;
 			}
-			if(p1){
+			if(pass1){
 				qxss.score(p1,c);
 				cout<<p1<<"This set has added to your "<<colorlist[(int)c]<<" row."<<endl;	
 			}
@@ -174,7 +178,6 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 				qxss.score(p1,c);
 				cout<<p1<<endl;
 			}
-			//nullllllll
 			else{
 				qxss.score(p2,c);
 				cout<<p2<<endl;

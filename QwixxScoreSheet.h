@@ -39,10 +39,6 @@ public:
 			default:return false;
 		}
 	}
-
-	
-	
-	
 	};
 
 #endif /* QWIXXSCORESHEET_H */
