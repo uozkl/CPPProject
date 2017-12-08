@@ -1,5 +1,4 @@
-// #ifdef TEST
-#include "QwintoPlayer.h"
+#ifdef TEST
 #include "QwintoRow.h"
 #include "QwintoScoreSheet.h"
 #include "QwintoPlayer.h"
@@ -25,27 +24,58 @@ int main()
              << "1.QwintoPlayer" << endl
              << "2.QwintoRow" << endl
              << "3.QwintoScoreSheet" << endl
-             << "4.QwintoPlayer" << endl
-             << "5.QwixxPlayer" << endl
-             << "6.QwixxRow" << endl
-             << "7.QwixxScoreSheet" << endl
-             << "8.RollOfDice" << endl
+             << "4.QwixxPlayer" << endl
+             << "5.QwixxRow" << endl
+             << "6.QwixxScoreSheet" << endl
+             << "7.RollOfDice" << endl
              << "Input index to start test:" << endl;
         cin >> index;
 
         if (index == 1)
         {
+            Colour red = Colour::RED;
+            Colour yellow = Colour::YELLOW;
+            Dice *a = new Dice(red);
+            Dice *b = new Dice(yellow);
+            RollOfDice rd;
+            rd.add(*a);
+            rd.add(*b);
+            rd.roll();
+            QwintoScoreSheet qtss = QwintoScoreSheet("myName");
+            QwintoPlayer qtpyr = QwintoPlayer(qtss);
+            qtpyr.inputBeforeRoll(rd);
+            qtpyr.inputAfterRoll(rd);
+            break;
         }
         if (index == 2)
         {
+            QwintoRow<Colour::RED> red;
+            red[2] = 3;
+            QwintoRow<Colour::YELLOW> yellow;
+            yellow[5] = 6;
+            QwintoRow<Colour::BLUE> blue;
+            blue[7] = 13;
+            cout << red << endl;
+            cout << yellow << endl;
+            cout << red << endl;
+            break;
         }
         if (index == 3)
         {
+            Colour red = Colour::RED;
+            Colour yellow = Colour::YELLOW;
+            Dice *a = new Dice(red);
+            Dice *b = new Dice(yellow);
+            RollOfDice rd;
+            rd.add(*a);
+            rd.add(*b);
+            rd.roll();
+            QwintoScoreSheet qtss = QwintoScoreSheet("myName");
+            cout << qtss << endl;
+            qtss.validate(rd, red, 7);
+            qtss.score(rd, Colour::BLUE, 7);
         }
         if (index == 4)
-        {
-        }
-        if (index == 1)
         {
             cout << "Testing QwixxPlayer.cpp" << endl;
             cout << "Build a player named test and set him active" << endl;
@@ -59,11 +89,9 @@ int main()
             rd.roll();
             cout << "Show score sheet, let player make choice" << endl;
             (*player).inputBeforeRoll(rd);
-            cout << endl
-                 << "End of test" << endl
-                 << endl;
+            cout << "End of test" << endl;
         }
-        if (index == 1)
+        if (index == 5)
         {
             cout << "Testing QwixxRow.cpp" << endl;
             cout << "Build a vector row red and list row green" << endl;
@@ -82,13 +110,25 @@ int main()
             cout << "Red: " << redRow << endl;
             cout << "Green: " << greenRow << endl;
             cout << "Add roll of dice";
+            redRow += rodR;
+            greenRow += rodG;
+            cout << "Print two rows" << endl;
+            cout << "Red: " << redRow << endl;
+            cout << "Green: " << greenRow << endl;
+            cout << "All input should be validated" << endl;
+            cout << "End of test" << endl;
         }
-
+        if (index == 6)
+        {
+            cout << "Testing QwixxScoreSheet.cpp" << endl;
+            cout << "You can test this by testing QwixxPlayer.cpp" << endl;
+            cout << "End of Test" << endl;
+        }
         if (index == 7)
         {
-        }
-        if (index == 8)
-        {
+            cout << "Testing RollOfDice.cpp" << endl;
+            cout << "You can test this by testing any ohter class above." << endl;
+            cout << "End of Test" << endl;
         }
 
         cout << "Keep testing? y/n" << endl;
@@ -98,4 +138,4 @@ int main()
     }
     return 0;
 }
-// #endif
+#endif

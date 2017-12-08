@@ -47,10 +47,7 @@ template <class T, Colour C>
 QwixxRow<T, C> QwixxRow<T, C>::operator+=(RollOfDice rd)
 {
 	int position, counter = 0;
-	if (!validate(rd, position))
-	{
-		throw "That entry is invalid";
-	}
+	validate(rd, position);
 	for (auto &a : scoreArray)
 	{
 		if (position == counter)
