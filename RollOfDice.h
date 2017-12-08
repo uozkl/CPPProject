@@ -24,8 +24,6 @@ public:
 	operator int() const;
 	vector<Dice> elems;
 	int num = 0;
-	//Dice setDice(string ipt);
-
 };
 
 #endif /* ROLLOFDICE_H */
