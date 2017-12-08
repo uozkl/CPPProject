@@ -109,18 +109,10 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 			undo=false;
 			checkInput(check,qxss,undo);
 			switch(check){
-				case 'r':
-					c=Colour::RED;
-					break;
-				case 'y':
-					c=Colour::YELLOW;
-					break;
-				case 'g':
-					c=Colour::GREEN;
-					break;
-				case 'b':
-					c=Colour::BLUE;
-					break;
+				case 'r':c=Colour::RED;break;
+				case 'y':c=Colour::YELLOW;break;
+				case 'g':c=Colour::GREEN;break;
+				case 'b':c=Colour::BLUE;break;
 				case 'm':
 					cout<<"You chose to skip this round"<<endl;
 					cout<<"You sure? You will use one of your chances to skip. y/n"<<endl;
@@ -131,10 +123,11 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 						}
 					else{
 						qxss.failed++;
+						cout<<endl<<"============================================================="<<endl<<endl;
+						return;
 					}
 					break;
 			}
-
 			if(!undo){ 
 				for(Dice d:rod)if(d.getColour()==c){
 					p1=p1.pair(*d1,d);
@@ -155,7 +148,7 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 				}
 				cout<<"Undo selection? y/n"<<endl;
 				checkInput(check,qxss,undo,1);
-				if(!undo)cout<<"You undid your selection"<<endl;
+				if(undo)cout<<"You undid your selection"<<endl;
 			}
 			
 		}
@@ -183,10 +176,6 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 				cout<<p2<<endl;
 			}
 		}
-		cout<<"DEBUG: score array at yellow:"<<endl;
-		for(auto a:qxss.yellow.scoreArray){
-			cout<<a<<" ";
-		}
 		cout<<endl<<"============================================================="<<endl<<endl;
 	}
 	else{
@@ -196,7 +185,6 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 		cout<<"Do you want to skip this round? y/n"<<endl;
 		checkInput(check,qxss,undo,1);
 		undo=true;
-		cout<<"DEBUG: check="<<check<<endl;
 		if(check=='n'){
 			cout<<"Please choose the colour where you want to put the public number"<<endl;
 			cout<<"You can choose ";

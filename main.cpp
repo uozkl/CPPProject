@@ -172,8 +172,9 @@ int main() {
 					a.active = true;
 					a.inputBeforeRoll(rd);
 					rd.roll();
-					cout << rd << endl;
 					cout << a.qxss << endl;
+					cout <<"Dice: "<<rd;
+					cout<<"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"<<endl;
 					a.inputAfterRoll(rd);
 					cout << a.qxss << endl;
 					islock=checkLock(a.qxss);
@@ -192,6 +193,8 @@ int main() {
 							cout << b.qxss;
 							b.inputAfterRoll(rd);
 							cout << b.qxss << endl;
+							cout <<"Dice: "<<rd;
+							cout<<"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"<<endl;
 							islock=checkLock(a.qxss);
 							if(islock!=-1){
 								for(auto &k:playerVec){
