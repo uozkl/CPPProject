@@ -14,19 +14,19 @@ using namespace std;
 
 template<>
 QwixxRow<vector<int>, Colour::RED>::QwixxRow() {
-	scoreArray = vector<int>(13, 0);
+	scoreArray = vector<int>(11, 0);
 }
 template<>
 QwixxRow<vector<int>, Colour::YELLOW>::QwixxRow() {
-	scoreArray = vector<int>(13, 0);
+	scoreArray = vector<int>(11, 0);
 }
 template<>
 QwixxRow<list<int>, Colour::BLUE>::QwixxRow() {
-	scoreArray = list<int>(12, 0);
+	scoreArray = list<int>(11, 0);
 }
 template<>
 QwixxRow<list<int>, Colour::GREEN>::QwixxRow() {
-	scoreArray = list<int>(12, 0);
+	scoreArray = list<int>(11, 0);
 }
 ostream& operator<<(ostream& os, QwixxRow<vector<int>, Colour::RED> row) {
 

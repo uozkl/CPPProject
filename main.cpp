@@ -19,7 +19,10 @@ int checkLock(QwixxScoreSheet &qxss){
 	int total=0;
 	int index=-1;
 	bool canLock=false;
+	bool last=false;
+
 	if(!qxss.lock[0]){
+		if((qxss.red.scoreArray).back()>0)last=true;
 		for(auto a:qxss.red.scoreArray){
 			if(a>0)total++;
 			if(total==5){
@@ -30,6 +33,7 @@ int checkLock(QwixxScoreSheet &qxss){
 	}
 	total=0;
 	if(!qxss.lock[1]){
+		if((qxss.yellow.scoreArray).back()>0)last=true;
 		for(auto a:qxss.yellow.scoreArray){
 			if(a>0)total++;
 			if(total==5){
@@ -40,6 +44,7 @@ int checkLock(QwixxScoreSheet &qxss){
 	}
 	total=0;
 	if(!qxss.lock[2]){
+		if((qxss.green.scoreArray).back()>0)last=true;
 		for(auto a:qxss.green.scoreArray){
 			if(a>0)total++;
 			if(total==5){
@@ -50,6 +55,7 @@ int checkLock(QwixxScoreSheet &qxss){
 	}
 	total=0;
 	if(!qxss.lock[3]){
+		if((qxss.blue.scoreArray).back()>0)last=true;
 		for(auto a:qxss.blue.scoreArray){
 			if(a>0)total++;
 			if(total==5){
@@ -75,7 +81,8 @@ int checkLock(QwixxScoreSheet &qxss){
 			}
 		}
 	}
-	return index;
+	if(canLock&&last)return index;
+	else return -1;
 }
 
 int main() {

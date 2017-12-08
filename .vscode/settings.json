@@ -18,6 +18,7 @@
         "set": "cpp",
         "xlocmon": "cpp",
         "xlocnum": "cpp",
-        "xloctime": "cpp"
+        "xloctime": "cpp",
+        "variant": "cpp"
     }
 }
