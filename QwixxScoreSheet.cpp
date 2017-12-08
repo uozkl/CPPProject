@@ -18,7 +18,7 @@ QwixxScoreSheet::QwixxScoreSheet(string pname)
 {
 	name = pname;
 }
-
+//print it
 ostream &operator<<(ostream &os, const QwixxScoreSheet &qxsheet)
 {
 	string lck[] = {"U", "B", "L"};
@@ -41,6 +41,7 @@ ostream &operator<<(ostream &os, const QwixxScoreSheet &qxsheet)
 	os << "Failed throws:" << qxsheet.failed << endl;
 	return os;
 }
+//get final score
 int QwixxScoreSheet::calcTotal()
 {
 	int total = 0;
@@ -53,6 +54,8 @@ int QwixxScoreSheet::calcTotal()
 			++counter;
 		}
 	}
+	if (lock[0] == 2)
+		counter++;
 	if (counter > 0)
 	{
 		total += points[counter - 1];
@@ -65,6 +68,8 @@ int QwixxScoreSheet::calcTotal()
 			++counter;
 		}
 	}
+	if (lock[1] == 2)
+		counter++;
 	if (counter > 0)
 	{
 		total += points[counter - 1];
@@ -77,6 +82,8 @@ int QwixxScoreSheet::calcTotal()
 			++counter;
 		}
 	}
+	if (lock[2] == 2)
+		counter++;
 	if (counter > 0)
 	{
 		total += points[counter - 1];
@@ -89,6 +96,8 @@ int QwixxScoreSheet::calcTotal()
 			++counter;
 		}
 	}
+	if (lock[3] == 2)
+		counter++;
 	if (counter > 0)
 	{
 		total += points[counter - 1];
@@ -97,7 +106,7 @@ int QwixxScoreSheet::calcTotal()
 	total -= failed * 5;
 	return total;
 }
-
+//operator !
 bool const QwixxScoreSheet::operator!()
 {
 	if (failed == 4)

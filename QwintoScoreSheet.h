@@ -14,7 +14,7 @@
 #include "Colour.h"
 #include <iostream>
 using namespace std;
-
+//Score sheet for Qwinto
 class QwintoScoreSheet : public ScoreSheet
 {
 

@@ -16,7 +16,7 @@
 #include <vector>
 #include <list>
 using namespace std;
-
+//scoresheet for qwixx
 class QwixxScoreSheet : public ScoreSheet
 {
 

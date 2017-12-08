@@ -11,7 +11,7 @@
 #define QWIXXPLAYER_H
 #include "RollOfDice.h"
 #include "QwixxScoreSheet.h"
-
+//headfile of qwixxplayer.cpp
 class QwixxPlayer : public Player
 {
   public:

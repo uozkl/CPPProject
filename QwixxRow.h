@@ -13,7 +13,7 @@
 #include "Colour.h"
 #include <iostream>
 using namespace std;
-
+//row of qwixx score sheet
 template <class T, Colour C>
 class QwixxRow
 {
@@ -26,6 +26,7 @@ class QwixxRow
 	T scoreArray;
 };
 template <class T, Colour C>
+//Check whether we can put the rod at the position
 bool QwixxRow<T, C>::validate(RollOfDice rod, int &position)
 {
 	int counter = 0;

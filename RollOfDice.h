@@ -13,6 +13,7 @@
 #include "Dice.h"
 using namespace std;
 class RollOfDice
+//another head file
 {
 
 	friend ostream &operator<<(ostream &os, RollOfDice rod);

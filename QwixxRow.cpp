@@ -13,7 +13,7 @@
 #include <vector>
 #include <list>
 using namespace std;
-
+//init row
 template <>
 QwixxRow<vector<int>, Colour::RED>::QwixxRow()
 {
@@ -34,6 +34,7 @@ QwixxRow<list<int>, Colour::GREEN>::QwixxRow()
 {
 	scoreArray = list<int>(11, 0);
 }
+//print roll
 ostream &operator<<(ostream &os, QwixxRow<vector<int>, Colour::RED> row)
 {
 
