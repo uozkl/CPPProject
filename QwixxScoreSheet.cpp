@@ -9,6 +9,7 @@
 #include "ScoreSheet.h"
 #include "QwixxRow.h"
 #include <iostream>
+#include <string>
 using namespace std;
 
 QwixxScoreSheet::QwixxScoreSheet(string pname) {
@@ -16,17 +17,18 @@ QwixxScoreSheet::QwixxScoreSheet(string pname) {
 }
 
 ostream& operator<<(ostream& os, const QwixxScoreSheet &qxsheet) {
+	string lck[]={"U","B","L"};
 
 	os << "Player name: " << qxsheet.name << "\t Points: "
 			<< qxsheet.overallScore << endl
 			<< "-------------------------------------------" << endl;
-	os << qxsheet.red << endl << "-------------------------------------------"
+	os << qxsheet.red <<lck[qxsheet.lock[0]]<< endl << "-------------------------------------------"
 			<< endl;
-	os << qxsheet.yellow << endl << "-------------------------------------------"
+	os << qxsheet.yellow <<lck[qxsheet.lock[1]]<< endl << "-------------------------------------------"
 			<< endl;
-	os << qxsheet.green << endl << "-------------------------------------------"
+	os << qxsheet.green <<lck[qxsheet.lock[2]]<< endl << "-------------------------------------------"
 			<< endl;
-	os << qxsheet.blue << endl << "-------------------------------------------"
+	os << qxsheet.blue <<lck[qxsheet.lock[3]]<< endl << "-------------------------------------------"
 			<< endl;
 	os << "Failed throws:" << qxsheet.failed << endl;
 	return os;

@@ -147,8 +147,9 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 					undo=true;
 					continue;
 				}
-				cout<<"Undo selection? y/n"<<endl;
+				cout<<"You sure? y/n"<<endl;
 				checkInput(check,qxss,undo,1);
+				undo=!undo;
 				if(undo)cout<<"You undid your selection"<<endl;
 			}
 			
@@ -185,15 +186,7 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 		cout<<"Your action"<<endl;
 		int publicNum=p1;
 		cout<<"Public number: "<<publicNum<<endl;
-		cout<<"Do you want to skip this round? y/n"<<endl;
-		checkInput(check,qxss,undo,1);
 		undo=true;
-		if(check=='y'){
-			cout<<"Player skipped"<<endl;
-			cout<<endl<<"=========================================================================="<<endl<<endl;
-			return;
-		}
-		if(check=='n'){
 			cout<<"Please choose the colour where you want to put the public number"<<endl;
 			cout<<"You can choose ";
 			if(!qxss.lock[0])cout<<"r for Red; ";
@@ -239,21 +232,25 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 						if(check=='y'){
 							Dice *nulldice=new Dice(c);
 							p1.add(*nulldice);
-							qxss.score(p1,c);
-							cout<<"Number added."<<endl;
-							break;
+							if(qxss.validate(p1,c)){
+								qxss.score(p1,c);
+								cout<<"Number added."<<endl;
+								cout<<endl<<"=========================================================================="<<endl<<endl;
+								return;}
+							else{
+								cout<<"Oops, you can't place the number there"<<endl;
+								undo=true;
+							}
+						}
+						else{
+							undo=true;
+							cout<<"You undid your action"<<endl;
 						}
 					}
-					else{
-						cout<<"Oops, you can't place the number there"<<endl;
-						undo=true;
-						continue;
-					}
-				
 				}
 			}
-			cout<<endl<<"=========================================================================="<<endl<<endl;
-		}
+			
+		
 	}
 
 }

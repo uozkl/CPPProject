@@ -44,11 +44,11 @@ ostream& operator<<(ostream& os, QwixxRow<vector<int>, Colour::RED> row) {
 		++i;
 	}
 	os << "|";
-	if (row.scoreArray[12] != 0) {
-		os << "L";
-	} else {
-		os << "U";
-	}
+	// if (row.scoreArray[12] != 0) {
+	// 	os << "L";
+	// } else {
+	// 	os << "U";
+	// }
 
 	return os;
 }
@@ -68,11 +68,11 @@ ostream& operator<<(ostream& os, QwixxRow<vector<int>, Colour::YELLOW> row) {
 		++i;
 	}
 	os << "|";
-	if (row.scoreArray[12] != 0) {
-		os << "L";
-	} else {
-		os << "U";
-	}
+	// if (row.scoreArray[12] != 0) {
+	// 	os << "L";
+	// } else {
+	// 	os << "U";
+	// }
 
 	return os;
 }
@@ -96,11 +96,11 @@ ostream& operator<<(ostream& os, QwixxRow<list<int>, Colour::GREEN> row) {
 		--i;
 	}
 	os << "|";
-	if (row.scoreArray.back() != 0) {
-		os << "L";
-	} else {
-		os << "U";
-	}
+	// if (row.scoreArray.back() != 0) {
+	// 	os << "L";
+	// } else {
+	// 	os << "U";
+	// }
 
 	return os;
 }
@@ -125,11 +125,11 @@ ostream& operator<<(ostream& os, QwixxRow<list<int>, Colour::BLUE> row) {
 		--i;
 	}
 	os << "|";
-	if (row.scoreArray.back() != 0) {
-		os << "L";
-	} else {
-		os << "U";
-	}
+	// if (row.scoreArray.back() != 0) {
+	// 	os << "L";
+	// } else {
+	// 	os << "U";
+	// }
 
 	return os;
 }
