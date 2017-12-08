@@ -1,19 +1,23 @@
 /* 
- * File:   RollOfDice.h
- * Author: Tony
- *
- * Created on
+ * University Of Ottawa
+ * CSI 2372 Final Project
+ * Professor : Jochen Lang
+ * Group Number : 11 
+ * Name : Zekun Li 8520399 Hanyang Yu 8524153
+ * 
  */
 
 #ifndef ROLLOFDICE_H
 #define ROLLOFDICE_H
-#include<iostream>
+#include <iostream>
 #include "Dice.h"
 using namespace std;
-class RollOfDice {
+class RollOfDice
+{
 
-	friend ostream& operator<<(ostream &os, RollOfDice rod);
-public:
+	friend ostream &operator<<(ostream &os, RollOfDice rod);
+
+  public:
 	RollOfDice();
 	void add(Dice &_dice);
 	Dice fetch(int posit);
@@ -27,4 +31,3 @@ public:
 };
 
 #endif /* ROLLOFDICE_H */
-

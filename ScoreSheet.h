@@ -1,8 +1,10 @@
 /* 
- * File:   ScoreSheet.h
- * Author: Tony
- *
- * Created on
+ * University Of Ottawa
+ * CSI 2372 Final Project
+ * Professor : Jochen Lang
+ * Group Number : 11 
+ * Name : Zekun Li 8520399 Hanyang Yu 8524153
+ * 
  */
 
 #ifndef SCORESHEET_H
@@ -13,11 +15,12 @@
 #include <string>
 using namespace std;
 
-class ScoreSheet {
+class ScoreSheet
+{
 
-	friend ostream& operator<<(ostream& out, const ScoreSheet& sheet);
-public:
+	friend ostream &operator<<(ostream &out, const ScoreSheet &sheet);
 
+  public:
 	ScoreSheet();
 	ScoreSheet(string pname);
 	string getName() const;
@@ -26,21 +29,23 @@ public:
 	void setTotal();
 	virtual ~ScoreSheet(){};
 	int failed = 0;
-	int getTotal() {
+	int getTotal()
+	{
 		return overallScore;
 	};
-	string getName() {
+	string getName()
+	{
 		return name;
 	};
 	virtual bool validate(RollOfDice rod, Colour color, int position) = 0;
 	virtual int calcTotal() = 0;
 
 	virtual bool const operator!() = 0;
-protected:
+
+  protected:
 	string name;
 
 	int overallScore = 0;
 };
 
 #endif /* SCORESHEET_H */
-

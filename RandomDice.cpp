@@ -1,8 +1,10 @@
 /* 
- * File:   RandomDice.cpp
- * Author: Tony
+ * University Of Ottawa
+ * CSI 2372 Final Project
+ * Professor : Jochen Lang
+ * Group Number : 11 
+ * Name : Zekun Li 8520399 Hanyang Yu 8524153
  * 
- * Created on
  */
 
 #include "RandomDice.h"
@@ -14,8 +16,7 @@
 std::mt19937 RandomDice::generator(time(0));
 std::uniform_int_distribution<unsigned> RandomDice::distribution(1, 6);
 
-int RandomDice::getDice() {
+int RandomDice::getDice()
+{
 	return distribution(generator);
-
 }
-

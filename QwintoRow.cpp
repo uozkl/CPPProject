@@ -1,20 +1,25 @@
 /* 
- * File:   QwintoRow.cpp
- * Author: Tony
+ * University Of Ottawa
+ * CSI 2372 Final Project
+ * Professor : Jochen Lang
+ * Group Number : 11 
+ * Name : Zekun Li 8520399 Hanyang Yu 8524153
  * 
- * Created on
  */
 
 #include "QwintoRow.h"
-#include"Colour.h"
+#include "Colour.h"
 #include "RollOfDice.h"
-#include<iostream>
+#include <iostream>
 
 //insertion operator for red row
-ostream& operator<<(ostream& os, QwintoRow<Colour::RED> row) {
+ostream &operator<<(ostream &os, QwintoRow<Colour::RED> row)
+{
 	os << "Red           ";
-	for (int i = 0; i < 10; ++i) {
-		switch (i) {
+	for (int i = 0; i < 10; ++i)
+	{
+		switch (i)
+		{
 		case 1:
 			os << "%";
 			break;
@@ -34,12 +39,18 @@ ostream& operator<<(ostream& os, QwintoRow<Colour::RED> row) {
 			os << "|";
 			break;
 		}
-		if (i != 9) {
-			if (row.scoreArray[i] != 0 && row.scoreArray[i] < 10) {
+		if (i != 9)
+		{
+			if (row.scoreArray[i] != 0 && row.scoreArray[i] < 10)
+			{
 				os << " " << row.scoreArray[i];
-			} else if (row.scoreArray[i] >= 10) {
+			}
+			else if (row.scoreArray[i] >= 10)
+			{
 				os << row.scoreArray[i];
-			} else {
+			}
+			else
+			{
 				os << "  ";
 			}
 		}
@@ -47,10 +58,13 @@ ostream& operator<<(ostream& os, QwintoRow<Colour::RED> row) {
 	return os;
 }
 //insertion operator for yellow row
-ostream& operator<<(ostream& os, QwintoRow<Colour::YELLOW> row) {
+ostream &operator<<(ostream &os, QwintoRow<Colour::YELLOW> row)
+{
 	os << "Yellow     ";
-	for (int i = 0; i < 10; ++i) {
-		switch (i) {
+	for (int i = 0; i < 10; ++i)
+	{
+		switch (i)
+		{
 		case 5:
 			os << "|XX|";
 			break;
@@ -64,12 +78,18 @@ ostream& operator<<(ostream& os, QwintoRow<Colour::YELLOW> row) {
 			os << "|";
 			break;
 		}
-		if (i != 9) {
-			if (row.scoreArray[i] != 0 && row.scoreArray[i] < 10) {
+		if (i != 9)
+		{
+			if (row.scoreArray[i] != 0 && row.scoreArray[i] < 10)
+			{
 				os << " " << row.scoreArray[i];
-			} else if (row.scoreArray[i] >= 10) {
+			}
+			else if (row.scoreArray[i] >= 10)
+			{
 				os << row.scoreArray[i];
-			} else {
+			}
+			else
+			{
 				os << "  ";
 			}
 		}
@@ -78,10 +98,13 @@ ostream& operator<<(ostream& os, QwintoRow<Colour::YELLOW> row) {
 	return os;
 }
 //insertion operator for blue row
-ostream& operator<<(ostream& os, QwintoRow<Colour::BLUE> row) {
+ostream &operator<<(ostream &os, QwintoRow<Colour::BLUE> row)
+{
 	os << "Blue    ";
-	for (int i = 0; i < 10; ++i) {
-		switch (i) {
+	for (int i = 0; i < 10; ++i)
+	{
+		switch (i)
+		{
 		case 2:
 			os << "%";
 			break;
@@ -101,12 +124,18 @@ ostream& operator<<(ostream& os, QwintoRow<Colour::BLUE> row) {
 			os << "|";
 			break;
 		}
-		if (i != 9) {
-			if (row.scoreArray[i] != 0 && row.scoreArray[i] < 10) {
+		if (i != 9)
+		{
+			if (row.scoreArray[i] != 0 && row.scoreArray[i] < 10)
+			{
 				os << " " << row.scoreArray[i];
-			} else if (row.scoreArray[i] >= 10) {
+			}
+			else if (row.scoreArray[i] >= 10)
+			{
 				os << row.scoreArray[i];
-			} else {
+			}
+			else
+			{
 				os << "  ";
 			}
 		}
@@ -114,4 +143,3 @@ ostream& operator<<(ostream& os, QwintoRow<Colour::BLUE> row) {
 
 	return os;
 }
-

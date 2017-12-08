@@ -5,4 +5,4 @@ Group Number:  11
 Name:          Zekun Li    8520399
                Hanyang Yu  8524153
                
-This application will only run on Windows PC, sorry apple fans Macs are not supported.
+This application was tested only on Windows PC, sorry apple fans Macs are not tested.
