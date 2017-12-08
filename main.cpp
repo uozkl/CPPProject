@@ -16,7 +16,7 @@ using namespace std;
 
 int checkLock(QwixxScoreSheet &qxss){
 	string colorlist[]={ "Red","Yellow","Green","Blue"};
-	int total;
+	int total=0;
 	int index=-1;
 	bool canLock=false;
 	if(!qxss.lock[0]){
@@ -87,7 +87,7 @@ int main() {
 		cout << "Please enter the number of players: " << endl;
 		int count;
 		cin >> count;
-		if (version == 1) {
+		if (version == 1&&count<4&&count>0) {
 			cout << "Qwinto is selected." << endl;
 			vector<QwintoPlayer> playerVec;
 			//create players
@@ -152,7 +152,7 @@ int main() {
 			}
 			cout << "The winner is: " << winner << "!" << endl;
 			done = true;
-		} else if (version == 2) {
+		} else if (version == 2&&count<4&&count>0) {
 			cout << "Qwixx is slected." << endl;
 			vector<QwixxPlayer> playerVec;
 			for (int i = 1; i <= count; ++i) {
