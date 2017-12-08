@@ -176,7 +176,6 @@ int main() {
 					cout <<"Dice: "<<rd;
 					cout<<"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"<<endl;
 					a.inputAfterRoll(rd);
-					cout << a.qxss << endl;
 					islock=checkLock(a.qxss);
 					if(islock!=-1){
 						for(auto &k:playerVec){
@@ -191,10 +190,9 @@ int main() {
 					for (auto &b : playerVec) {	//loop over all inactive players and get their input
 						if (!b.active) {
 							cout << b.qxss;
-							b.inputAfterRoll(rd);
-							cout << b.qxss << endl;
 							cout <<"Dice: "<<rd;
 							cout<<"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"<<endl;
+							b.inputAfterRoll(rd);
 							islock=checkLock(a.qxss);
 							if(islock!=-1){
 								for(auto &k:playerVec){

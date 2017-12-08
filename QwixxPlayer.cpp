@@ -123,7 +123,7 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 						}
 					else{
 						qxss.failed++;
-						cout<<endl<<"============================================================="<<endl<<endl;
+						cout<<endl<<"=========================================================================="<<endl<<endl;
 						return;
 					}
 					break;
@@ -138,11 +138,12 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 				cout<<"Sum of two sets with white dice is "<<endl<<p1<<p2<<endl;
 				pass1=qxss.validate(p1,c);
 				pass2=qxss.validate(p2,c);
+				
 				if(pass1&pass2)cout<<"You can add either one of two set to your "<<colorlist[(int)c]<<" row."<<endl;
-				else if(pass1)cout<<"You can add only one set to your "<<colorlist[(int)c]<<" row."<<p1<<endl;
-				else if(pass2)cout<<"You can add only one set "<<p2<<" to your "<<colorlist[(int)c]<<" row."<<endl;
+				else if(pass1)cout<<"Now you can add only one set to your "<<colorlist[(int)c]<<" row."<<endl<<p1;
+				else if(pass2)cout<<"Now you can add only one set to your "<<colorlist[(int)c]<<" row."<<endl<<p2;
 				else {
-					cout<<"But you can't add any one of the set to your "<<colorlist[(int)c]<<" row."<<endl<<"Please reselect a colcour"<<endl;
+					cout<<"But you can't add any one of the set to your "<<colorlist[(int)c]<<" row."<<endl<<"Please reselect a colour"<<endl;
 					undo=true;
 					continue;
 				}
@@ -176,15 +177,22 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 				cout<<p2<<endl;
 			}
 		}
-		cout<<endl<<"============================================================="<<endl<<endl;
+		cout<<endl<<"=========================================================================="<<endl<<endl;
 	}
 	else{
 		check='f';
 		p1=p1.pair(*d1,*d2);
 		cout<<"Your action"<<endl;
+		int publicNum=p1;
+		cout<<"Public number: "<<publicNum<<endl;
 		cout<<"Do you want to skip this round? y/n"<<endl;
 		checkInput(check,qxss,undo,1);
 		undo=true;
+		if(check=='y'){
+			cout<<"Player skipped"<<endl;
+			cout<<endl<<"=========================================================================="<<endl<<endl;
+			return;
+		}
 		if(check=='n'){
 			cout<<"Please choose the colour where you want to put the public number"<<endl;
 			cout<<"You can choose ";
@@ -193,6 +201,7 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 			if(!qxss.lock[2])cout<<"g for green; ";
 			if(!qxss.lock[3])cout<<"b for blue; ";
 			cout<<"and m to skip. "<<endl;
+			
 			while(undo){
 				undo=false;
 				checkInput(check,qxss,undo);
@@ -213,7 +222,10 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 						cout<<"You chose to skip this round"<<endl;
 						cout<<"You sure? y/n"<<endl;
 						checkInput(check,qxss,undo,1);
-						if(check=='y')break;
+						if(check=='y'){
+							cout<<endl<<"=========================================================================="<<endl<<endl;
+							return;
+							}
 						else{
 							undo=true;
 							break;
@@ -221,7 +233,7 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 						}
 				if(!undo){
 					if(qxss.validate(p1,c)){
-						cout<<"Public number "<<p1<<" will add to your "<<colorlist[(int)c]<<" row"<<endl;
+						cout<<"Public number: "<<publicNum<<" will add to your "<<colorlist[(int)c]<<" row"<<endl;
 						cout<<"You Sure? y/n"<<endl;
 						checkInput(check,qxss,undo,1);
 						if(check=='y'){
@@ -240,7 +252,7 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &rod) {
 				
 				}
 			}
-			cout<<endl<<"============================================================="<<endl<<endl;
+			cout<<endl<<"=========================================================================="<<endl<<endl;
 		}
 	}
 

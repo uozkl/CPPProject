@@ -15,6 +15,9 @@
         "ostream": "cpp",
         "list": "cpp",
         "bitset": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "xlocmon": "cpp",
+        "xlocnum": "cpp",
+        "xloctime": "cpp"
     }
 }

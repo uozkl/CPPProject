@@ -39,7 +39,6 @@ QwixxRow<T, C> QwixxRow<T, C>::operator +=(RollOfDice rd) {
 	if(!validate(rd,position)){
 		throw "That entry is invalid";
 		}
-	cout<<"DEBUG:POSITION= "<<position<<endl;
 	for (auto &a:scoreArray){
 		if(position==counter){
 			a=rd;

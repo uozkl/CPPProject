@@ -19,14 +19,14 @@ ostream& operator<<(ostream& os, const QwixxScoreSheet &qxsheet) {
 
 	os << "Player name: " << qxsheet.name << "\t Points: "
 			<< qxsheet.overallScore << endl
-			<< "----------------------------------------" << endl;
-	os << qxsheet.red << endl << "----------------------------------------"
+			<< "-------------------------------------------" << endl;
+	os << qxsheet.red << endl << "-------------------------------------------"
 			<< endl;
-	os << qxsheet.yellow << endl << "----------------------------------------"
+	os << qxsheet.yellow << endl << "-------------------------------------------"
 			<< endl;
-	os << qxsheet.green << endl << "----------------------------------------"
+	os << qxsheet.green << endl << "-------------------------------------------"
 			<< endl;
-	os << qxsheet.blue << endl << "----------------------------------------"
+	os << qxsheet.blue << endl << "-------------------------------------------"
 			<< endl;
 	os << "Failed throws:" << qxsheet.failed << endl;
 	return os;
