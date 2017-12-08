@@ -20,17 +20,7 @@ int main()
     char a;
     while (test)
     {
-        string playerName = "test";
-        RollOfDice rd;
-        RollOfDice rodR, rodG;
-        Colour red = Colour::RED;
-        Colour green = Colour::GREEN;
-        Dice *reddice = new Dice(red);
-        Dice *greendice = new Dice(green);
-        QwixxRow<vector<int>, Colour::RED> redRow;
-        QwixxRow<list<int>, Colour::GREEN> greenRow;
         test = false;
-
         cout << "You can test folling classes:" << endl
              << "1.QwintoPlayer" << endl
              << "2.QwintoRow" << endl
@@ -42,23 +32,29 @@ int main()
              << "8.RollOfDice" << endl
              << "Input index to start test:" << endl;
         cin >> index;
-        switch (index)
+
+        if (index == 1)
         {
-        case 1:
-            break;
-        case 2:
-            break;
-        case 3:
-            break;
-        case 4:
-            break;
-        case 5:
+        }
+        if (index == 2)
+        {
+        }
+        if (index == 3)
+        {
+        }
+        if (index == 4)
+        {
+        }
+        if (index == 1)
+        {
             cout << "Testing QwixxPlayer.cpp" << endl;
             cout << "Build a player named test and set him active" << endl;
+            string playerName = "test";
             QwintoScoreSheet *qtss = new QwintoScoreSheet(playerName);
             QwintoPlayer *player = new QwintoPlayer(*qtss);
             (*player).active = true;
             cout << "Build roll of dice, add dice and roll" << endl;
+            RollOfDice rd;
             (*player).inputBeforeRoll(rd);
             rd.roll();
             cout << "Show score sheet, let player make choice" << endl;
@@ -66,10 +62,18 @@ int main()
             cout << endl
                  << "End of test" << endl
                  << endl;
-            break;
-        case 6:
+        }
+        if (index == 1)
+        {
             cout << "Testing QwixxRow.cpp" << endl;
             cout << "Build a vector row red and list row green" << endl;
+            QwixxRow<vector<int>, Colour::RED> redRow;
+            QwixxRow<list<int>, Colour::GREEN> greenRow;
+            RollOfDice rodR, rodG;
+            Colour red = Colour::RED;
+            Colour green = Colour::GREEN;
+            Dice *reddice = new Dice(red);
+            Dice *greendice = new Dice(green);
             rodR.add(*reddice);
             rodG.add(*greendice);
             rodR.roll();
@@ -78,13 +82,15 @@ int main()
             cout << "Red: " << redRow << endl;
             cout << "Green: " << greenRow << endl;
             cout << "Add roll of dice";
-
-            break;
-        case 7:
-            break;
-        case 8:
-            break;
         }
+
+        if (index == 7)
+        {
+        }
+        if (index == 8)
+        {
+        }
+
         cout << "Keep testing? y/n" << endl;
         cin >> a;
         if (a == 'y')
