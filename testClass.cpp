@@ -1,3 +1,4 @@
+#ifdef TEST
 #include "QwintoPlayer.h"
 #include "QwintoRow.h"
 #include "QwintoScoreSheet.h"
@@ -16,8 +17,10 @@ int main()
     cout << "This is the test class for all the classes" << endl;
     int index;
     bool test = true;
+    char a;
     while (test)
     {
+        test = false;
         cout << "You can test folling classes:" << endl;
         cout << "1.QwintoPlayer" << endl
              << "2.QwintoRow" << endl
@@ -48,6 +51,11 @@ int main()
         case 8:
             break;
         }
+        cout << "Keep testing? y/n" << endl;
+        cin >> a;
+        if (a == 'y')
+            test = true;
     }
     return 0;
 }
+#endif
