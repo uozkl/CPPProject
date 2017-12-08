@@ -10,30 +10,18 @@
 
 RollOfDice::RollOfDice() {
 }
-
+// add a dice to to the deck
 void RollOfDice::add(Dice & _dice) {
 	elems.push_back(_dice);
 	num++;
 }
-
-//Dice RollOfDice::fetch(int posit)
-//{
-//	if (posit>=num|posit<0)throw out_of_range("Position out of range");
-//	Dice fetched = elems[posit];
-//	for (int n = posit; n < num; n++) {
-//		elems[n] = elems[n + 1];
-//	}
-//	elems.pop_back();
-//	num--;
-//	return fetched;
-//}
-
+// roll all dices in deck
 void RollOfDice::roll() {
 	for (Dice &it : elems) {
 		it.roll();
 	}
 }
-//idk about this
+//pair two dices for qwixx
 RollOfDice RollOfDice::pair(Dice & diceA, Dice & diceB) {
 	RollOfDice outpt;
 	outpt.add(diceA);
@@ -61,7 +49,7 @@ RollOfDice::operator int() const {
 	}
 	return sum;
 }
-
+// insertion operator, print each dice and then print the sum of all dices
 ostream& operator<<(ostream & os, RollOfDice rod) {
 	int sum = 0;
 	for (Dice a : rod) {
